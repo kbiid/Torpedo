@@ -23,14 +23,10 @@ public class baseball {
 				
 				array2 = setArray(array2, baseball[j][0]);
 				
-				if(array2[0] == array[0] && array2[0] != 0) strike++;
-				if(array2[1] == array[1] && array2[1] != 0) strike++;
-				if(array2[2] == array[2] && array2[2] != 0) strike++;
+				strike = countStrike(strike,array,array2);
 				if(strike != baseball[j][1]) break;
 				
-				if(array2[0] == array[1] || array2[0] == array[2] && array2[0] != 0) ball++;
-				if(array2[1] == array[0] || array2[1] == array[2] && array2[1] != 0) ball++;
-				if(array2[2] == array[0] || array2[2] == array[1] && array2[2] != 0) ball++;
+				ball = countBall(ball,array,array2);
 				if(ball != baseball[j][2]) break;
 				
 				if(j == baseball.length-1) answer++;
@@ -39,6 +35,46 @@ public class baseball {
 		}
 		
 		return answer;
+		
+	}
+	
+	public static int countStrike(int strike, int [] array1, int [] array2) {
+		
+		int strikeCount = strike;
+		
+		if(array1.length != array2.length)
+			return 0;
+		
+		for(int i=0; i<array1.length; i++) {
+			for(int j=0; j<array2.length; j++) {
+				if(i == j) {
+					if(array2[j] == array1[i] && array2[j] != 0)
+						strikeCount++;
+				}
+			}
+		}
+		
+		return strikeCount;
+	}
+	
+	public static int countBall(int ball, int [] array1, int [] array2) {
+		int ballCount = ball;
+		
+		if(array1.length != array2.length)
+			return 0;
+		
+		for(int i=0; i<array2.length; i++) {
+			for(int j=0; j<array1.length; j++) {
+				if(i != j) {
+					if(array2[i] == array1[j] && array2[i] != 0) {
+						ballCount++;
+						break;
+					}
+				}
+			}
+		}
+		
+		return ballCount;
 		
 	}
 	
