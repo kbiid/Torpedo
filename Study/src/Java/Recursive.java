@@ -18,6 +18,7 @@ public class Recursive {
 		sum = recursiveMethod(num);
 		
 		System.out.println(sum);
+		
 	}
 
 }
