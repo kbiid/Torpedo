@@ -1,5 +1,8 @@
 package BaseballGame;
 
+/*
+ * 프로그래머스 문제
+ * */
 public class baseball {
 
 	public static int solution(int [][] baseball) {
