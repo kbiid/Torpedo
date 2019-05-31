@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class GameTest {
 
+	//스트라이크 판정에 대한 테스트
 	@Test
 	void testCountStrike() {
 		int[] array1 = {1,2,3};
@@ -15,6 +16,7 @@ class GameTest {
 		assertEquals(2,mainGame.countStrike(array1, array2));
 	}
 
+	//볼 판정에 대한 테스트
 	@Test
 	void testCountBall() {
 		int[] array1 = {1,2,3};
