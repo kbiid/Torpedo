@@ -49,8 +49,19 @@ public class MainGame {
 	
 	private void EnterNumber(int [] array, Scanner scanner) {
 		for(int i=0; i<array.length; i++) {
+			while(!IsNumber(scanner)) {
+				PrintString("숫자가 아닌 것이 포함되어 있습니다.");
+				scanner.nextLine();
+			}
 			array[i] = scanner.nextInt();
 		}
+	}
+	
+	private boolean IsNumber(Scanner scanner) {
+		if(!scanner.hasNextInt()) 
+			return false;
+		else 
+			return true;
 	}
 	
 	private void SetArrayRandomNum(int [] array) {
@@ -83,7 +94,7 @@ public class MainGame {
 		}
 	}
 	
-	private int countStrike(int[] array1, int[] array2) {
+	protected int countStrike(int[] array1, int[] array2) {
 		int strike = 0;
 		
 		for(int i=0; i<array1.length; i++) {
@@ -98,7 +109,7 @@ public class MainGame {
 		return strike;
 	}
 	
-	private int countBall(int[] array1, int[] array2) {
+	protected int countBall(int[] array1, int[] array2) {
 		int ball = 0;
 		
 		for(int i=0; i<array1.length; i++) {
