@@ -25,20 +25,10 @@ public class MainGame {
 			strike = 0;
 			ball = 0;
 			
-			for(int i=0; i<playerNumArray.length; i++) {
-				playerNumArray[i] = scanner.nextInt();
-			}
+			EnterNumber(playerNumArray, scanner);
 			
-			for(int i=0; i<randomNumArray.length; i++) {
-				for(int j=0; j<playerNumArray.length; j++) {
-					if(i == j && randomNumArray[i] == playerNumArray[j]) {
-						strike++;
-					}
-					else if(i != j && randomNumArray[i] == playerNumArray[j]) {
-						ball++;
-					}
-				}
-			}
+			strike = countStrike(randomNumArray, playerNumArray);
+			ball = countBall(randomNumArray, playerNumArray);
 			
 			if(strike == 3) {
 				PrintString(answerCount + "번만에 정답입니다!");
@@ -57,6 +47,12 @@ public class MainGame {
 		System.out.println(str);
 	}
 	
+	private void EnterNumber(int [] array, Scanner scanner) {
+		for(int i=0; i<array.length; i++) {
+			array[i] = scanner.nextInt();
+		}
+	}
+	
 	private void SetArrayRandomNum(int [] array) {
 		
 		Random random = new Random(9);
@@ -69,7 +65,7 @@ public class MainGame {
 		
 	}
 	
-	private static void ChangeOverlapValue(int [] array, int index, int indexValue) {
+	private void ChangeOverlapValue(int [] array, int index, int indexValue) {
 
 		boolean isSuccess = false;
 		Random random = new Random(9);
@@ -85,8 +81,36 @@ public class MainGame {
 				}
 			} 
 		}
-		
 	}
 	
+	private int countStrike(int[] array1, int[] array2) {
+		int strike = 0;
+		
+		for(int i=0; i<array1.length; i++) {
+			for(int j=0; j<array2.length; j++) {
+				if(i == j && array1[i] == array2[j]) {
+					strike++;
+					break;
+				}
+			}
+		}
+		
+		return strike;
+	}
+	
+	private int countBall(int[] array1, int[] array2) {
+		int ball = 0;
+		
+		for(int i=0; i<array1.length; i++) {
+			for(int j=0; j<array2.length; j++) {
+				if(i != j && array1[i] == array2[j]) {
+					ball++;
+					break;
+				}
+			}
+		}
+		
+		return ball;
+	}
 	
 }
