@@ -1,4 +1,4 @@
-package Java;
+package BaseballGame;
 
 public class baseball {
 
