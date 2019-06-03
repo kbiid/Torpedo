@@ -1,57 +1,57 @@
 package BaseballGame;
 
 /*
- * ÇÁ·Î±×·¡¸Ó½º ¹®Á¦
+ * í”„ë¡œê·¸ë˜ë¨¸ìŠ¤ ìˆ«ìì•¼êµ¬
  * */
 public class baseball {
 
 	private static int solution(int [][] baseball) {
 		
-		int answer = 0;
-		int[] array = new int[3];
-		int[] array2 = new int[3];
-		int strike,ball;
+		int answer_count = 0;
+		int[] compareValue_array = new int[3];
+		int[] problemValue_array = new int[3];
+		int strike_count,ball_count;
 		
 		for(int i=123; i<=987; i++) {
 			
-			array = setArray(array, i);
+			compareValue_array = setArray(compareValue_array, i);
 			
-			if(array[0] == 0 || array[1] == 0 || array[2] == 0) continue;
-			if(array[0] == array[1] || array[1] == array[2] || array[2] == array[0]) continue;
+			if(compareValue_array[0] == 0 || compareValue_array[1] == 0 || compareValue_array[2] == 0) continue;
+			if(compareValue_array[0] == compareValue_array[1] || compareValue_array[1] == compareValue_array[2] || compareValue_array[2] == compareValue_array[0]) continue;
 			
 			for(int j=0; j<baseball.length; j++) {
 				
-				strike = 0;
-				ball = 0;
+				strike_count = 0;
+				ball_count = 0;
 				
-				array2 = setArray(array2, baseball[j][0]);
+				problemValue_array = setArray(problemValue_array, baseball[j][0]);
 				
-				strike = countStrike(strike,array,array2);
-				if(strike != baseball[j][1]) break;
+				strike_count = countStrike(strike_count,compareValue_array,problemValue_array);
+				if(strike_count != baseball[j][1]) break;
 				
-				ball = countBall(ball,array,array2);
-				if(ball != baseball[j][2]) break;
+				ball_count = countBall(ball_count,compareValue_array,problemValue_array);
+				if(ball_count != baseball[j][2]) break;
 				
-				if(j == baseball.length-1) answer++;
+				if(j == baseball.length-1) answer_count++;
 				
 			}
 		}
 		
-		return answer;
+		return answer_count;
 		
 	}
 	
-	private static int countStrike(int strike, int [] array1, int [] array2) {
+	private static int countStrike(int strike, int [] compareValue_array, int [] problemValue_array) {
 		
 		int strikeCount = strike;
 		
-		if(array1.length != array2.length)
+		if(compareValue_array.length != problemValue_array.length)
 			return 0;
 		
-		for(int i=0; i<array1.length; i++) {
-			for(int j=0; j<array2.length; j++) {
+		for(int i=0; i<compareValue_array.length; i++) {
+			for(int j=0; j<problemValue_array.length; j++) {
 				if(i == j) {
-					if(array2[j] == array1[i] && array2[j] != 0)
+					if(problemValue_array[j] == compareValue_array[i] && problemValue_array[j] != 0)
 						strikeCount++;
 				}
 			}
@@ -60,16 +60,16 @@ public class baseball {
 		return strikeCount;
 	}
 	
-	private static int countBall(int ball, int [] array1, int [] array2) {
+	private static int countBall(int ball, int [] compareValue_array, int [] problemValue_array) {
 		int ballCount = ball;
 		
-		if(array1.length != array2.length)
+		if(compareValue_array.length != problemValue_array.length)
 			return 0;
 		
-		for(int i=0; i<array2.length; i++) {
-			for(int j=0; j<array1.length; j++) {
+		for(int i=0; i<problemValue_array.length; i++) {
+			for(int j=0; j<compareValue_array.length; j++) {
 				if(i != j) {
-					if(array2[i] == array1[j] && array2[i] != 0) {
+					if(problemValue_array[i] == compareValue_array[j] && problemValue_array[i] != 0) {
 						ballCount++;
 						break;
 					}

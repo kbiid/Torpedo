@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class GameTest {
 
-	//½ºÆ®¶óÀÌÅ© ÆÇÁ¤¿¡ ´ëÇÑ Å×½ºÆ®
+	//ìŠ¤íŠ¸ë¼ì´í¬ ì˜¬ë°”ë¥´ê²Œ íŒë‹¨í•˜ëŠ”ì§€ í…ŒìŠ¤íŠ¸
 	@Test
 	void testCountStrike() {
 		int[] array1 = {1,2,3};
@@ -16,7 +16,7 @@ class GameTest {
 		assertEquals(2,mainGame.countStrike(array1, array2));
 	}
 
-	//º¼ ÆÇÁ¤¿¡ ´ëÇÑ Å×½ºÆ®
+	//ë³¼ ì˜¬ë°”ë¥´ê²Œ íŒë‹¨í•˜ëŠ”ì§€ í…ŒìŠ¤íŠ¸
 	@Test
 	void testCountBall() {
 		int[] array1 = {1,2,3};

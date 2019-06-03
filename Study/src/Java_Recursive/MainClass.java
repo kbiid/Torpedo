@@ -1,5 +1,6 @@
 package Java_Recursive;
 
+//메인 클래스
 public class MainClass {
 	
 	public static void main(String[] args) {

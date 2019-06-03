@@ -1,7 +1,7 @@
 package Java_Loop;
 
 /*
- * ¼ıÀÚ¸¦ ÀÔ·Â¹Ş¾Æ °è»êÇÏ±â À§ÇÑ Å¬·¡½º
+ * ìˆ˜ë¥¼ ê³„ì‚°í•˜ê¸° ìœ„í•œ í´ë˜ìŠ¤
  * */
 public class Calculator {
 
@@ -29,6 +29,7 @@ public class Calculator {
 		return maxNum;
 	}
 	
+	//minNumë¶€í„° maxNumê¹Œì§€ ë”í•˜ê³  ê²°ê³¼ë¥¼ ë¦¬í„´í•˜ëŠ” ë©”ì†Œë“œ
 	protected int LoopSum() {
 		
 		int sum = 0;

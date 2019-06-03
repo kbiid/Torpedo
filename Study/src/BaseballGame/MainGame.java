@@ -2,10 +2,11 @@ package BaseballGame;
 
 import java.util.Scanner;
 
-// °ÔÀÓ¿¡ °üÇÑ ÄÚµå°¡ µé¾îÀÖ´Â Å¬·¡½º
+// ê²Œì„ì˜ ì£¼ëœ ë¡œì§ì´ ë‹´ê²¨ ìˆëŠ” í´ë˜ìŠ¤
 public class MainGame {
 	
-	protected void Play() {
+	//ê²Œì„ ì‹œì‘
+	protected void play() {
 		
 		int [] randomNumArray = new int[3];
 		int [] playerNumArray = new int[3];
@@ -14,10 +15,10 @@ public class MainGame {
 		
 		Scanner scanner = new Scanner(System.in);
 		
-		SetArrayRandomNum(randomNumArray);
+		setArrayRandomNum(randomNumArray);
 		
-		PrintString("¾ß±¸ °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù!!");
-		PrintString("¼­·Î ´Ù¸¥ 3°³ÀÇ ¼ıÀÚ¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä.");
+		printString("ì•¼êµ¬ê²Œì„ì„ ì‹œì‘í•©ë‹ˆë‹¤!!");
+		printString("ì„œë¡œ ë‹¤ë¥¸ 3ê°œì˜ ìˆ«ìë¥¼ ì…ë ¥í•˜ì„¸ìš”.");
 		
 		answerCount = 0;
 		
@@ -25,58 +26,58 @@ public class MainGame {
 			strike = 0;
 			ball = 0;
 			
-			EnterNumber(playerNumArray, scanner);
+			enterNumber(playerNumArray, scanner);
 			
 			strike = countStrike(randomNumArray, playerNumArray);
 			ball = countBall(randomNumArray, playerNumArray);
 			
 			if(strike == 3) {
-				PrintString(answerCount + "¹ø¸¸¿¡ Á¤´äÀÔ´Ï´Ù!");
+				printString(answerCount + "ë²ˆë§Œì— ë§ì·„ìŠµë‹ˆë‹¤!");
 				scanner.close();
 				break;
 			}
 			else {
-				PrintString(strike + "S" + " " + ball + "B ÀÔ´Ï´Ù."  );
+				printString(strike + "S" + " " + ball + "B ì…ë‹ˆë‹¤."  );
 				answerCount++;
 			}
 		}
 		
 	}
 	
-	private void PrintString(String str) {
+	private void printString(String str) {
 		System.out.println(str);
 	}
 	
-	private void EnterNumber(int [] array, Scanner scanner) {
+	private void enterNumber(int [] array, Scanner scanner) {
 		for(int i=0; i<array.length; i++) {
-			while(!IsNumber(scanner)) {
-				PrintString("¼ıÀÚ°¡ ¾Æ´Ñ °ÍÀÌ Æ÷ÇÔµÇ¾î ÀÖ½À´Ï´Ù.");
+			while(!isNumber(scanner)) {
+				printString("ìˆ«ìê°€ ì…ë ¥ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.");
 				scanner.nextLine();
 			}
 			array[i] = scanner.nextInt();
 		}
 	}
 	
-	private boolean IsNumber(Scanner scanner) {
+	private boolean isNumber(Scanner scanner) {
 		if(!scanner.hasNextInt()) 
 			return false;
 		else 
 			return true;
 	}
 	
-	private void SetArrayRandomNum(int [] array) {
+	private void setArrayRandomNum(int [] array) {
 		
 		Random random = new Random(9);
 		
 		for(int i=0; i<array.length; i++) {
-			array[i] = random.GetRandomNumber();
+			array[i] = random.getRandomNumber();
 			
-			ChangeOverlapValue(array, i, array[i]);
+			changeOverlapValue(array, i, array[i]);
 		}
 		
 	}
 	
-	private void ChangeOverlapValue(int [] array, int index, int indexValue) {
+	private void changeOverlapValue(int [] array, int index, int indexValue) {
 
 		boolean isSuccess = false;
 		Random random = new Random(9);
@@ -85,7 +86,7 @@ public class MainGame {
 			if(i != index && indexValue == array[i]) {
 				while(!isSuccess) {
 					
-					array[i] = random.GetRandomNumber();
+					array[i] = random.getRandomNumber();
 					
 					if(indexValue != array[i])
 						isSuccess = true;

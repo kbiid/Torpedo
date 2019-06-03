@@ -5,11 +5,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 /*
- * TDD¸¦ À§ÇÑ JUnit Å×½ºÆ® Å¬·¡½º
+ * TDDê¸°ë°˜ìœ¼ë¡œ JUnit í…ŒìŠ¤íŠ¸ ìœ„í•œ í´ë˜ìŠ¤
  * */
 class GameTest {
 
-	// ÄÄÇ»ÅÍ°¡ ¼­·Î ´Ù¸¥ ÀÓÀÇ ¼ö(1~9) 3°³¸¦ ¸¸µå´Â °ÍÀ» Å×½ºÆ®
+	// ì´ˆê¸° í…ŒìŠ¤íŠ¸ -> ê²Œì„ í´ë˜ìŠ¤ê°€ ìˆëŠ”ê°€? 3ê°œì˜ ìˆ«ìë¥¼ ë§Œë“¤ì–´ ë‚´ëŠ”ê°€?
 	@Test
 	void test() {
 		Game game = new Game();
@@ -19,21 +19,21 @@ class GameTest {
 		 */
 	}
 
-	// À¯Àú°¡ ÀÔ·ÂÇÏ°íÀÚ ÇÏ´Â 3°³ÀÇ ¼­·Î ´Ù¸¥ ¼ö(1~9)°¡ ³ª¿À´Â °ÍÀ» Å×½ºÆ®
+	// ìœ ì €ê°€ 3ê°œì˜ ìˆ«ìë¥¼ ì…ë ¥í–ˆì„ ë•Œ ì •ë³´ê°€ ì˜¬ë°”ë¥´ê²Œ ì €ì¥ë˜ì—ˆëŠ”ì§€ í…ŒìŠ¤íŠ¸
 	@Test
 	void test_User_EnterNumber() {
 		Game game = new Game(1, 2, 3);
-		int[] array = game.GetUserArray();
+		int[] array = game.getUserArray();
 		for (int i = 0; i < array.length; i++) {
 			System.out.println(array[i]);
 		}
 	}
 
-	// ½ºÆ®¶óÀÌÅ©,º¼ ÆÇÁ¤ Å×½ºÆ®
+	// ìŠ¤íŠ¸ë¼ì´í¬, ë³¼ íŒì • í…ŒìŠ¤íŠ¸
 	@Test
 	void test_StrikeAndBall() {
 		Game game = new Game(1, 2, 3);
-		int[] array = game.GetUserArray();
+		int[] array = game.getUserArray();
 		for (int i = 0; i < array.length; i++) {
 			System.out.println(array[i]);
 		}

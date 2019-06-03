@@ -1,7 +1,7 @@
 package BaseballGame;
 
 /*
- * ·£´ıÀ¸·Î ¼ıÀÚ¸¦ ¸¸µé±â À§ÇÑ Å¬·¡½º
+ * ëœë¤ìœ¼ë¡œ ìˆ«ìë¥¼ ë§Œë“¤ê¸° ìœ„í•œ í´ë˜ìŠ¤
  * */
 public class Random {
 
@@ -11,15 +11,16 @@ public class Random {
 		this.num = num;
 	}
 	
-	protected void SetNum(int num) {
+	protected void setNum(int num) {
 		this.num = num;
 	}
 	
-	protected int GetNum() {
+	protected int getNum() {
 		return num;
 	}
 	
-	protected int GetRandomNumber() {
+	//ëœë¤ìœ¼ë¡œ ë§Œë“¤ì–´ì§„ ìˆ«ìë¥¼ ë¦¬í„´í•˜ëŠ” ë©”ì†Œë“œ
+	protected int getRandomNumber() {
 		int number = (int)(Math.random() * num) + 1;
 		
 		return number;

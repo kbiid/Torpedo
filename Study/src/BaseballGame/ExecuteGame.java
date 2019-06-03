@@ -1,12 +1,12 @@
 package BaseballGame;
 
-// °ÔÀÓ ½ÇÇàÀ» À§ÇÑ Å¬·¡½º
+// ê²Œì„ì„ ì‹¤í–‰í•˜ê¸° ìœ„í•œ í´ë˜ìŠ¤
 public class ExecuteGame {
 
 	public static void main(String[] args) {
 
 		MainGame mainGame = new MainGame();
 		
-		mainGame.Play();
+		mainGame.play();
 	}
 }

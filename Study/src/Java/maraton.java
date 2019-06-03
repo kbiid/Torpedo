@@ -2,6 +2,7 @@ package Java;
 
 import java.util.Arrays;
 
+// 프로그래머스 알고리즘 문제
 public class maraton {
 
 	private static String solution(String[] participant, String[] completion) {
