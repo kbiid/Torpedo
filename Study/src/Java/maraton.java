@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class maraton {
 
-	public static String solution(String[] participant, String[] completion) {
+	private static String solution(String[] participant, String[] completion) {
 		Arrays.sort(participant);
         Arrays.sort(completion);
         
