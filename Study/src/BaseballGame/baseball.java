@@ -5,7 +5,7 @@ package BaseballGame;
  * */
 public class baseball {
 
-	public static int solution(int [][] baseball) {
+	private static int solution(int [][] baseball) {
 		
 		int answer = 0;
 		int[] array = new int[3];
@@ -41,7 +41,7 @@ public class baseball {
 		
 	}
 	
-	public static int countStrike(int strike, int [] array1, int [] array2) {
+	private static int countStrike(int strike, int [] array1, int [] array2) {
 		
 		int strikeCount = strike;
 		
@@ -60,7 +60,7 @@ public class baseball {
 		return strikeCount;
 	}
 	
-	public static int countBall(int ball, int [] array1, int [] array2) {
+	private static int countBall(int ball, int [] array1, int [] array2) {
 		int ballCount = ball;
 		
 		if(array1.length != array2.length)
@@ -81,7 +81,7 @@ public class baseball {
 		
 	}
 	
-	public static int[] setArray(int[] array, int value) {
+	private static int[] setArray(int[] array, int value) {
 		
 		int num = 1;
 		int tmp;
