@@ -3,7 +3,7 @@ package BaseballGame;
 /*
  * 프로그래머스 숫자야구
  * */
-public class baseball {
+public class Baseball {
 
 	// 숫자 야구 알고리즘 메소드
 	private static int solution(int[][] baseball) {
