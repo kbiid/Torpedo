@@ -20,7 +20,7 @@ class TestClass {
 	void test_prev() {
 		Node node = new Node();
 
-		Assertions.assertEquals(null, node.getPrev());
+		Assertions.assertEquals(null, node.getPreviousNode());
 	}
 
 	// next가 있는가?
@@ -28,7 +28,7 @@ class TestClass {
 	void test_next() {
 		Node node = new Node();
 
-		Assertions.assertEquals(null, node.getNext());
+		Assertions.assertEquals(null, node.getNextNode());
 	}
 
 	// 입력한 데이터가 보존되는가?

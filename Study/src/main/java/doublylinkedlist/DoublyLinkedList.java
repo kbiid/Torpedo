@@ -14,15 +14,15 @@ public class DoublyLinkedList {
 
 		Node node = new Node(data);
 
-		node.setNext(head.getNext());
+		node.setNextNode(head.getNextNode());
 
-		if (head.getNext() != null) {
-			head.getNext().setPrev(node);
+		if (head.getNextNode() != null) {
+			head.getNextNode().setPreviousNode(node);
 		} else {
-			head.setPrev(node);
+			head.setPreviousNode(node);
 		}
 
-		head.setNext(node);
+		head.setNextNode(node);
 		size++;
 
 	}
@@ -35,20 +35,20 @@ public class DoublyLinkedList {
 			return;
 		}
 
-		Node prevNode = getNodeByIndex(index - 1);
-		Node nextNode = prevNode.getNext();
+		Node previousNode = getNodeByIndex(index - 1);
+		Node nextNode = previousNode.getNextNode();
 
 		Node newNode = new Node(data);
 
-		prevNode.setNext(newNode);
+		previousNode.setNextNode(newNode);
 
-		newNode.setPrev(prevNode);
-		newNode.setNext(nextNode);
+		newNode.setPreviousNode(previousNode);
+		newNode.setNextNode(nextNode);
 
-		if (newNode.getNext() != null) {
-			nextNode.setPrev(newNode);
+		if (newNode.getNextNode() != null) {
+			nextNode.setPreviousNode(newNode);
 		} else {
-			head.setPrev(newNode);
+			head.setPreviousNode(newNode);
 		}
 
 		size++;
@@ -59,17 +59,17 @@ public class DoublyLinkedList {
 
 		Node node = new Node(data);
 
-		node.setNext(head);
+		node.setNextNode(head);
 
-		if (head.getPrev() != null) {
-			head.getPrev().setNext(node);
-			node.setPrev(head.getPrev());
+		if (head.getPreviousNode() != null) {
+			head.getPreviousNode().setNextNode(node);
+			node.setPreviousNode(head.getPreviousNode());
 		} else {
-			head.setNext(node);
-			node.setPrev(head);
+			head.setNextNode(node);
+			node.setPreviousNode(head);
 		}
 
-		head.setPrev(node);
+		head.setPreviousNode(node);
 
 		size++;
 
@@ -84,11 +84,11 @@ public class DoublyLinkedList {
 
 		if (index < (size / 2)) {
 			for (int i = 0; i <= index; i++) {
-				node = node.getNext();
+				node = node.getNextNode();
 			}
 		} else {
 			for (int i = size; i > index; i--) {
-				node = node.getPrev();
+				node = node.getPreviousNode();
 			}
 		}
 
@@ -101,7 +101,7 @@ public class DoublyLinkedList {
 
 	protected Node deleteFirst() {
 
-		if (head.getNext() == null) {
+		if (head.getNextNode() == null) {
 			System.out.println("이 doublyLinkedList에는 노드가 존재하지 않습니다.");
 			return null;
 		}
@@ -109,11 +109,11 @@ public class DoublyLinkedList {
 		Node firstNode = getNodeByIndex(0);
 
 		if (size == 1) {
-			head.setNext(null);
-			head.setPrev(null);
+			head.setNextNode(null);
+			head.setPreviousNode(null);
 		} else {
-			head.setNext(head.getNext().getNext());
-			head.getNext().setPrev(head);
+			head.setNextNode(head.getNextNode().getNextNode());
+			head.getNextNode().setPreviousNode(head);
 		}
 
 		size--;
@@ -132,15 +132,15 @@ public class DoublyLinkedList {
 		}
 
 		Node removeNode = getNodeByIndex(index);
-		Node prev = removeNode.getPrev();
-		Node next = removeNode.getNext();
+		Node prev = removeNode.getPreviousNode();
+		Node next = removeNode.getNextNode();
 
-		prev.setNext(next);
+		prev.setNextNode(next);
 
 		if (next != null) {
-			next.setPrev(prev);
+			next.setPreviousNode(prev);
 		} else {
-			head.setPrev(prev);
+			head.setPreviousNode(prev);
 		}
 
 		size--;
@@ -157,11 +157,11 @@ public class DoublyLinkedList {
 			return deleteFirst();
 		}
 
-		Node removeNode = head.getPrev();
-		Node previousNode = removeNode.getPrev();
+		Node removeNode = head.getPreviousNode();
+		Node previousNode = removeNode.getPreviousNode();
 
-		previousNode.setNext(head);
-		head.setPrev(previousNode);
+		previousNode.setNextNode(head);
+		head.setPreviousNode(previousNode);
 
 		size--;
 
@@ -169,15 +169,15 @@ public class DoublyLinkedList {
 	}
 
 	protected String printDoublyLinkedList() {
-		if (head.getNext() == null && head.getPrev() == null)
+		if (head.getNextNode() == null && head.getPreviousNode() == null)
 			return "[]";
 
 		Node temp = head;
 		String str = "[";
 
-		while (temp.getNext() != null) {
+		while (temp.getNextNode() != null) {
 			str += temp.getData() + ",";
-			temp = temp.getNext();
+			temp = temp.getNextNode();
 		}
 
 		str += temp.getData();

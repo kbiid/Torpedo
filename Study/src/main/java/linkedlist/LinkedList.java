@@ -79,65 +79,65 @@ public class LinkedList {
 
 		return str + "]";
 	}
-	
+
 	protected Object removeFirstNode() {
-		
+
 		Node temp = head;
 		head = temp.getNextNode();
-		
+
 		Object returnData = temp.getData();
 		temp = null;
 		size--;
-		
+
 		return returnData;
 	}
-	
+
 	protected Object remove(int index) {
-		
-		if(index == 0)
+
+		if (index == 0)
 			return removeFirstNode();
-		
+
 		Node temp = getNodeByIndex(index - 1);
-		
+
 		Node deleteNode = temp.getNextNode();
-		
+
 		temp.setNextNode(temp.getNextNode().getNextNode());
-		
+
 		Object returnData = deleteNode.getData();
-		
-		if(deleteNode == tail)
+
+		if (deleteNode == tail)
 			tail = temp;
-		
+
 		deleteNode = null;
 		size--;
-		
+
 		return returnData;
 	}
-	
+
 	protected int getLinkedListSize() {
 		return size;
 	}
-	
+
 	protected Object getIndexData(int index) {
 		Node node = getNodeByIndex(index);
-		
+
 		return node.getData();
 	}
-	
+
 	protected int getNodeIndex(Object data) {
 		Node node = head;
-		
+
 		int index = 0;
-		
-		while(node.getData() != data) {
+
+		while (node.getData() != data) {
 			node = node.getNextNode();
 			index++;
-			
-			if(node == null)
+
+			if (node == null)
 				return -1;
 		}
-		
+
 		return index;
 	}
-	
+
 }
