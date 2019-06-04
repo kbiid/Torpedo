@@ -1,4 +1,4 @@
-package BaseballGame;
+package baseballgame.normal;
 
 /*
  * 랜덤으로 숫자를 만들기 위한 클래스

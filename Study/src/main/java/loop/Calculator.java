@@ -1,4 +1,4 @@
-package Java_Loop;
+package loop;
 
 /*
  * 수를 계산하기 위한 클래스

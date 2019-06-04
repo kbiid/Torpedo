@@ -1,4 +1,4 @@
-package Java_LinkedList;
+package linkedlist;
 
 public class Main {
 
@@ -11,8 +11,6 @@ public class Main {
 		linkedList.addLastNode(30);
 		linkedList.addLastNode(40);
 		
-		System.out.println(linkedList.getNodeIndex(20));
-		System.out.println(linkedList.getNodeIndex(10));
-		System.out.println(linkedList.getNodeIndex(40));
+		System.out.println(linkedList);
 	}
 }

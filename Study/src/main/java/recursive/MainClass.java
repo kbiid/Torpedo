@@ -1,4 +1,4 @@
-package Java_Recursive;
+package recursive;
 
 //메인 클래스
 public class MainClass {

@@ -1,4 +1,4 @@
-package BaseballGame;
+package baseballgame.normal;
 
 import static org.junit.jupiter.api.Assertions.*;
 

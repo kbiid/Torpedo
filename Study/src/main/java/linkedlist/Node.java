@@ -1,4 +1,4 @@
-package Java_LinkedList;
+package linkedlist;
 
 public class Node {
 

@@ -1,4 +1,4 @@
-package Java_Loop;
+package loop;
 
 public class Loop {
 	

@@ -1,4 +1,4 @@
-package BaseballGame;
+package algoritm;
 
 /*
  * 프로그래머스 숫자야구

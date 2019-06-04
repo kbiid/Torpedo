@@ -1,4 +1,4 @@
-package BaseBallGame_TDD;
+package baseballgame.tdd;
 
 public class ExcecutionGame {
 

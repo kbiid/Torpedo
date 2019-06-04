@@ -1,4 +1,4 @@
-package BaseBallGame_TDD;
+package baseballgame.tdd;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;

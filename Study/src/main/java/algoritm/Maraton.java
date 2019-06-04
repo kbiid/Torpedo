@@ -1,9 +1,9 @@
-package Java;
+package algoritm;
 
 import java.util.Arrays;
 
 // 프로그래머스 알고리즘 문제
-public class maraton {
+public class Maraton {
 
 	private static String solution(String[] participant, String[] completion) {
 		Arrays.sort(participant);

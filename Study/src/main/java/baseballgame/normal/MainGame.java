@@ -1,4 +1,4 @@
-package BaseballGame;
+package baseballgame.normal;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package Java_Recursive;
+package recursive;
 
 //재귀 함수가 들어있는 클래스
 public class Recursive {

@@ -1,4 +1,4 @@
-package BaseballGame;
+package baseballgame.normal;
 
 // 게임을 실행하기 위한 클래스
 public class ExecuteGame {
