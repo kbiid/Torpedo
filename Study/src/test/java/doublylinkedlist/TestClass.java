@@ -97,9 +97,9 @@ class TestClass {
 		doublyLinkedList.addFirst(4);
 		doublyLinkedList.addFirst(5);
 
-		doublyLinkedList.deleteFirst();
+		Node node = doublyLinkedList.deleteFirst();
 
-		Assertions.assertEquals(4, doublyLinkedList.getSize());
+		Assertions.assertEquals(5, node.getData());
 	}
 
 	// doubly linkedlist를 인덱스로 삭제할 수 있는가?
@@ -113,9 +113,25 @@ class TestClass {
 		doublyLinkedList.addFirst(4);
 		doublyLinkedList.addFirst(5);
 
-		//doublyLinkedList.deleteByIndex(2);
+		Node node = doublyLinkedList.deleteByIndex(2);
 
-		Assertions.assertEquals(4, doublyLinkedList.getNodeByIndex(2).getData());
+		Assertions.assertEquals(3, node.getData());
+	}
+
+	// doubly linkedlist의 마지막 노드가 삭제되는가?
+	@Test
+	void test_doublylinkedlistDeleteLastNode() {
+		DoublyLinkedList doublyLinkedList = new DoublyLinkedList();
+
+		doublyLinkedList.addFirst(1);
+		doublyLinkedList.addFirst(2);
+		doublyLinkedList.addFirst(3);
+		doublyLinkedList.addFirst(4);
+		doublyLinkedList.addFirst(5);
+
+		Node node = doublyLinkedList.deleteLast();
+
+		Assertions.assertEquals(1, node.getData());
 	}
 
 }
