@@ -5,15 +5,14 @@ import java.util.Scanner;
 // 게임의 주된 로직이 담겨 있는 클래스
 public class MainGame {
 
+	private int[] randomNumArray = new int[3];
+	private int[] playerNumArray = new int[3];
+
+	private int strikeCount, ballCount, answerCount;
+	private Scanner scanner = new Scanner(System.in);
+
 	// 게임 시작
 	protected void play() {
-
-		int[] randomNumArray = new int[3];
-		int[] playerNumArray = new int[3];
-
-		int strike, ball, answerCount;
-
-		Scanner scanner = new Scanner(System.in);
 
 		setArrayRandomNum(randomNumArray);
 
@@ -22,25 +21,35 @@ public class MainGame {
 
 		answerCount = 0;
 
-		while (true) {
-			strike = 0;
-			ball = 0;
+		runGame();
+
+		printString(answerCount + "번만에 맞췄습니다!");
+		scanner.close();
+
+	}
+
+	private void runGame() {
+		
+		while (!is3Strike()) {
+			strikeCount = 0;
+			ballCount = 0;
 
 			enterNumber(playerNumArray, scanner);
 
-			strike = countStrike(randomNumArray, playerNumArray);
-			ball = countBall(randomNumArray, playerNumArray);
+			strikeCount = countStrike(randomNumArray, playerNumArray);
+			ballCount = countBall(randomNumArray, playerNumArray);
 
-			if (strike == 3) {
-				printString(answerCount + "번만에 맞췄습니다!");
-				scanner.close();
-				break;
-			} else {
-				printString(strike + "S" + " " + ball + "B 입니다.");
-				answerCount++;
-			}
+			printString(strikeCount + "S" + " " + ballCount + "B 입니다.");
+			answerCount++;
 		}
 
+	}
+
+	private boolean is3Strike() {
+		if (strikeCount == 3)
+			return true;
+		else
+			return false;
 	}
 
 	private void printString(String str) {
