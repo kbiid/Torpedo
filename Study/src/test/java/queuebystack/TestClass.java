@@ -49,17 +49,17 @@ class TestClass {
 
 		Assertions.assertEquals(2, stackQueue.deQueue());
 	}
-	
+
 	// peek가 작동하는가?
-		@Test
-		void test_peek() {
-			StackQueue stackQueue = new StackQueue();
+	@Test
+	void test_peek() {
+		StackQueue stackQueue = new StackQueue();
 
-			stackQueue.enQueue(2);
-			stackQueue.enQueue(3);
-			stackQueue.enQueue(4);
-			stackQueue.enQueue(5);
+		stackQueue.enQueue(2);
+		stackQueue.enQueue(3);
+		stackQueue.enQueue(4);
+		stackQueue.enQueue(5);
 
-			Assertions.assertEquals(2, stackQueue.peek());
-		}
+		Assertions.assertEquals(2, stackQueue.peek());
+	}
 }

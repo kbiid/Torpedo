@@ -75,7 +75,7 @@ class GameTest {
 		game.setStrikeCount();
 		game.setBallCount();
 
-		Assertions.assertEquals(false, game.is3Strike());
+		Assertions.assertEquals(false, game.isThreeStrike());
 	}
 
 }

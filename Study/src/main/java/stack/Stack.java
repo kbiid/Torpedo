@@ -9,26 +9,20 @@ public class Stack {
 		stackDepth = -1;
 	}
 
-	protected void push(Object data) {
-
+	public void push(Object data) {
 		StackNode stackNode = new StackNode(data);
 
-		// 스택이 비어있는 경우
-		if (stackDepth == -1) {
+		if (isEmpty()) {
 			stackNode.setNextStackNode(null);
-		}
-		// 스택이 비어있지 않은 경우
-		else {
+		} else {
 			stackNode.setNextStackNode(topNode);
 		}
 
 		topNode = stackNode;
-
 		stackDepth++;
 	}
 
-	protected Object pop() {
-
+	public Object pop() {
 		StackNode stackNode = topNode;
 
 		topNode = topNode.getNextStackNode();
@@ -36,22 +30,21 @@ public class Stack {
 		stackDepth--;
 
 		return stackNode.getData();
-
 	}
 
-	protected StackNode peek() {
-
+	public StackNode peek() {
 		return topNode;
 	}
 
-	protected boolean isEmpty() {
-		if (stackDepth == -1)
+	public boolean isEmpty() {
+		if (stackDepth == -1) {
 			return true;
-		else
+		} else {
 			return false;
+		}
 	}
 
-	protected int getStackDepth() {
+	public int getStackDepth() {
 		return stackDepth;
 	}
 }

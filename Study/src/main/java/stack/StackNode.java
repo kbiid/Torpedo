@@ -8,15 +8,15 @@ public class StackNode {
 		this.data = data;
 	}
 
-	protected Object getData() {
+	public Object getData() {
 		return data;
 	}
 
-	protected void setNextStackNode(StackNode nextStackNode) {
+	public void setNextStackNode(StackNode nextStackNode) {
 		this.nextStackNode = nextStackNode;
 	}
 
-	protected StackNode getNextStackNode() {
+	public StackNode getNextStackNode() {
 		return nextStackNode;
 	}
 }

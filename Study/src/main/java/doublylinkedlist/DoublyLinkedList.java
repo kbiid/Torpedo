@@ -10,8 +10,7 @@ public class DoublyLinkedList {
 		size = 0;
 	}
 
-	protected void addFirst(Object data) {
-
+	public void addFirst(Object data) {
 		Node node = new Node(data);
 
 		node.setNextNode(head.getNextNode());
@@ -24,14 +23,11 @@ public class DoublyLinkedList {
 
 		head.setNextNode(node);
 		size++;
-
 	}
 
-	protected void addByIndex(int index, Object data) {
-
+	public void addByIndex(int index, Object data) {
 		if (index == 0) {
 			addFirst(data);
-
 			return;
 		}
 
@@ -39,7 +35,6 @@ public class DoublyLinkedList {
 		Node nextNode = previousNode.getNextNode();
 
 		Node newNode = new Node(data);
-
 		previousNode.setNextNode(newNode);
 
 		newNode.setPreviousNode(previousNode);
@@ -52,13 +47,10 @@ public class DoublyLinkedList {
 		}
 
 		size++;
-
 	}
 
-	protected void addLast(Object data) {
-
+	public void addLast(Object data) {
 		Node node = new Node(data);
-
 		node.setNextNode(head);
 
 		if (head.getPreviousNode() != null) {
@@ -72,13 +64,12 @@ public class DoublyLinkedList {
 		head.setPreviousNode(node);
 
 		size++;
-
 	}
 
-	protected Node getNodeByIndex(int index) {
-
-		if (index < 0 || index > size)
+	public Node getNodeByIndex(int index) {
+		if (index < 0 || index > size) {
 			return null;
+		}
 
 		Node node = head;
 
@@ -95,12 +86,11 @@ public class DoublyLinkedList {
 		return node;
 	}
 
-	protected int getSize() {
+	public int getSize() {
 		return size;
 	}
 
-	protected Node deleteFirst() {
-
+	public Node deleteFirst() {
 		if (head.getNextNode() == null) {
 			System.out.println("이 doublyLinkedList에는 노드가 존재하지 않습니다.");
 			return null;
@@ -119,11 +109,9 @@ public class DoublyLinkedList {
 		size--;
 
 		return firstNode;
-
 	}
 
-	protected Node deleteByIndex(int index) {
-
+	public Node deleteByIndex(int index) {
 		if (index < 0 || index >= size) {
 			System.out.println("index 오류 입니다.");
 			return null;
@@ -148,8 +136,7 @@ public class DoublyLinkedList {
 		return removeNode;
 	}
 
-	protected Node deleteLast() {
-
+	public Node deleteLast() {
 		if (size == 0) {
 			System.out.println("비어있는 리스트 입니다.");
 			return null;
@@ -168,7 +155,7 @@ public class DoublyLinkedList {
 		return removeNode;
 	}
 
-	protected String printDoublyLinkedList() {
+	public String printDoublyLinkedList() {
 		if (head.getNextNode() == null && head.getPreviousNode() == null)
 			return "[]";
 
@@ -183,6 +170,5 @@ public class DoublyLinkedList {
 		str += temp.getData();
 
 		return str + "]";
-
 	}
 }

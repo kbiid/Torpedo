@@ -17,27 +17,27 @@ public class Node {
 		nextNode = null;
 	}
 
-	protected void setData(Object data) {
+	public void setData(Object data) {
 		this.data = data;
 	}
 
-	protected Object getData() {
+	public Object getData() {
 		return data;
 	}
 
-	protected void setPreviousNode(Node prev) {
+	public void setPreviousNode(Node prev) {
 		this.previousNode = prev;
 	}
 
-	protected Node getPreviousNode() {
+	public Node getPreviousNode() {
 		return previousNode;
 	}
 
-	protected void setNextNode(Node next) {
+	public void setNextNode(Node next) {
 		this.nextNode = next;
 	}
 
-	protected Node getNextNode() {
+	public Node getNextNode() {
 		return nextNode;
 	}
 }

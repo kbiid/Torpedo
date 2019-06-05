@@ -1,5 +1,7 @@
 package queuebystack;
 
+import stack.Stack;
+
 public class StackQueue {
 
 	private Stack rear;
@@ -12,39 +14,33 @@ public class StackQueue {
 		size = 0;
 	}
 
-	protected boolean isEmpty() {
-		if (size == 0)
+	public boolean isEmpty() {
+		if (size == 0) {
 			return true;
-		else
+		} else {
 			return false;
+		}
 	}
 
-	protected void enQueue(Object data) {
-
+	public void enQueue(Object data) {
 		rear.push(data);
-
 		size++;
 	}
 
-	protected int getSize() {
+	public int getSize() {
 		return size;
 	}
 
-	protected Object deQueue() {
-
-		// rear Stack에 있는 데이터들을 front Stack에 다시 push해주는 과정
-		while (!rear.isEmpty()) {
+	public Object deQueue() {
+		while (!rear.isEmpty()) {// rear Stack에 있는 데이터들을 front Stack에 다시 push해주는 과정
 			front.push(rear.pop());
 		}
 
 		return front.pop();
-
 	}
 
-	protected Object peek() {
-		
-		// rear Stack에 있는 데이터들을 front Stack에 다시 push해주는 과정
-		while (!rear.isEmpty()) {
+	public Object peek() {
+		while (!rear.isEmpty()) {// rear Stack에 있는 데이터들을 front Stack에 다시 push해주는 과정
 			front.push(rear.pop());
 		}
 

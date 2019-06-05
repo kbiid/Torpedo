@@ -12,8 +12,7 @@ public class MainGame {
 	private Scanner scanner = new Scanner(System.in);
 
 	// 게임 시작
-	protected void play() {
-
+	public void play() {
 		setArrayRandomNum(randomNumArray);
 
 		printString("야구게임을 시작합니다!!");
@@ -25,12 +24,10 @@ public class MainGame {
 
 		printString(answerCount + "번만에 맞췄습니다!");
 		scanner.close();
-
 	}
 
 	private void runGame() {
-		
-		while (!is3Strike()) {
+		while (!isThreeStrike()) {
 			strikeCount = 0;
 			ballCount = 0;
 
@@ -42,14 +39,14 @@ public class MainGame {
 			printString(strikeCount + "S" + " " + ballCount + "B 입니다.");
 			answerCount++;
 		}
-
 	}
 
-	private boolean is3Strike() {
-		if (strikeCount == 3)
+	private boolean isThreeStrike() {
+		if (strikeCount == 3) {
 			return true;
-		else
+		} else {
 			return false;
+		}
 	}
 
 	private void printString(String str) {
@@ -69,37 +66,32 @@ public class MainGame {
 
 	// 숫자를 제대로 입력했는지에 대해서 true,false를 리턴하는 메소드
 	private boolean isNumber(Scanner scanner) {
-		if (!scanner.hasNextInt())
+		if (!scanner.hasNextInt()) {
 			return false;
-		else
+		} else {
 			return true;
+		}
 	}
 
 	// 배열의 크기만큼 랜덤으로 숫자를 생성해주는 메소드
 	private void setArrayRandomNum(int[] array) {
-
 		Random random = new Random(9);
 
 		for (int i = 0; i < array.length; i++) {
 			array[i] = random.getRandomNumber();
-
 			changeOverlapValue(array, i, array[i]);
 		}
-
 	}
 
 	// 숫자의 중복 검사를 위한 메소드
 	private void changeOverlapValue(int[] array, int index, int indexValue) {
-
 		boolean isSuccess = false;
 		Random random = new Random(9);
 
 		for (int i = 0; i < array.length; i++) {
 			if (i != index && indexValue == array[i]) {
 				while (!isSuccess) {
-
 					array[i] = random.getRandomNumber();
-
 					if (indexValue != array[i])
 						isSuccess = true;
 				}
@@ -107,7 +99,7 @@ public class MainGame {
 		}
 	}
 
-	protected int countStrike(int[] array1, int[] array2) {
+	public int countStrike(int[] array1, int[] array2) {
 		int strike = 0;
 
 		for (int i = 0; i < array1.length; i++) {
@@ -118,11 +110,10 @@ public class MainGame {
 				}
 			}
 		}
-
 		return strike;
 	}
 
-	protected int countBall(int[] array1, int[] array2) {
+	public int countBall(int[] array1, int[] array2) {
 		int ball = 0;
 
 		for (int i = 0; i < array1.length; i++) {
@@ -133,7 +124,6 @@ public class MainGame {
 				}
 			}
 		}
-
 		return ball;
 	}
 

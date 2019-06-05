@@ -9,15 +9,15 @@ public class Node {
 		previousNode = null;
 	}
 
-	protected void setPreviousNode(Node previousNode) {
+	public void setPreviousNode(Node previousNode) {
 		this.previousNode = previousNode;
 	}
 
-	protected Node getPreviousNode() {
+	public Node getPreviousNode() {
 		return previousNode;
 	}
 
-	protected Object getData() {
+	public Object getData() {
 		return data;
 	}
 
