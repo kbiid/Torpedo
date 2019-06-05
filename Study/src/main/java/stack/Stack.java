@@ -13,9 +13,12 @@ public class Stack {
 
 		StackNode stackNode = new StackNode(data);
 
+		// 스택이 비어있는 경우
 		if (stackDepth == -1) {
 			stackNode.setNextStackNode(null);
-		} else {
+		}
+		// 스택이 비어있지 않은 경우
+		else {
 			stackNode.setNextStackNode(topNode);
 		}
 
