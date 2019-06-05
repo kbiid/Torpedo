@@ -60,7 +60,6 @@ public class LinkedList {
 	}
 
 	public String toString() {
-
 		if (head == null)
 			return "[]";
 
