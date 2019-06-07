@@ -2,6 +2,11 @@ package queuebystack;
 
 import stack.Stack;
 
+/**
+ * Stack 2개로 Queue를 구현한 클래스
+ * 
+ * @author user
+ */
 public class StackQueue {
 
 	private Stack rear;
@@ -23,6 +28,10 @@ public class StackQueue {
 	}
 
 	public void enQueue(Object data) {
+		if (!isFrontEmpty()) {
+			dataRePushInRear();
+		}
+
 		rear.push(data);
 		size++;
 	}
@@ -36,6 +45,7 @@ public class StackQueue {
 			front.push(rear.pop());
 		}
 
+		dataRePushInRear();
 		return front.pop();
 	}
 
@@ -44,6 +54,24 @@ public class StackQueue {
 			front.push(rear.pop());
 		}
 
-		return front.peek().getData();
+		dataRePushInRear();
+		return front.peek();
+	}
+
+	/**
+	 * front Stack이 비어있지 않을 경우 rear Stack에 다시 데이터를 넣어주기 위한 메소드
+	 */
+	public void dataRePushInRear() {
+		while (!front.isEmpty()) {
+			rear.push(front.pop());
+		}
+	}
+
+	public boolean isFrontEmpty() {
+		if (front.isEmpty()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
