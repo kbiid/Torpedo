@@ -55,7 +55,7 @@ class TestClass {
 		queue.deQueue();
 		queue.deQueue();
 
-		Assertions.assertEquals(12, queue.deQueue().getData());
+		Assertions.assertEquals(12, queue.deQueue());
 
 	}
 
@@ -71,7 +71,7 @@ class TestClass {
 		queue.enQueue(3);
 		queue.enQueue(4);
 
-		Assertions.assertEquals(7, queue.peek().getData());
+		Assertions.assertEquals(7, queue.peek());
 
 	}
 

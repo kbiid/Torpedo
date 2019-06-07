@@ -61,7 +61,7 @@ class TestClass {
 		stack.push(5);
 		stack.push(7);
 
-		Assertions.assertEquals(7, stack.peek().getData());
+		Assertions.assertEquals(7, stack.peek());
 	}
 
 }
