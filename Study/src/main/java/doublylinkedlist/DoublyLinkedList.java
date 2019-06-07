@@ -156,8 +156,9 @@ public class DoublyLinkedList {
 	}
 
 	public String printDoublyLinkedList() {
-		if (head.getNextNode() == null && head.getPreviousNode() == null)
+		if (head.getNextNode() == null && head.getPreviousNode() == null) {
 			return "[]";
+		}
 
 		Node temp = head;
 		String str = "[";
