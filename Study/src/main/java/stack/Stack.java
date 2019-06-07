@@ -24,15 +24,20 @@ public class Stack {
 
 	public Object pop() {
 		StackNode stackNode = topNode;
+		if (stackNode == null) {
+			return new NullPointerException("Error! stackNode is null.");
+		}
 
 		topNode = topNode.getNextStackNode();
-
 		stackDepth--;
 
 		return stackNode.getData();
 	}
 
-	public StackNode peek() {
+	public Object peek() {
+		if (topNode == null) {
+			return new NullPointerException("Error! stackNode is null.");
+		}
 		return topNode;
 	}
 
