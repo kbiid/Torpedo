@@ -67,6 +67,9 @@ public class LinkedList {
 		} else {
 			Node before_Node = getNodeByIndex(index - 1);
 			Node index_Node = before_Node.getNextNode();
+			if (index_Node == null) {
+				throw new NullPointerException("node is null");
+			}
 			Node newNode = new Node(data);
 
 			before_Node.setNextNode(newNode);
@@ -95,6 +98,9 @@ public class LinkedList {
 	}
 
 	public Object removeFirstNode() {
+		if (isEmpty()) {
+			throw new NullPointerException("LinkedList is Empty!!");
+		}
 		Node temp = head;
 		head = temp.getNextNode();
 
