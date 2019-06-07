@@ -4,16 +4,15 @@ import java.util.Scanner;
 
 //테스트 코드에 기반하면 만들어진 게임 클래스
 public class Game {
-
 	private int[] randomNumberArray = new int[3];
 	private int[] userNumberArray = new int[3];
 
-	private int strike, ball, answerCount;
+	private int strikeCount, ballCount, answerCount;
 	private Scanner scanner;
 
 	public Game() {
-		strike = 0;
-		ball = 0;
+		strikeCount = 0;
+		ballCount = 0;
 		answerCount = 0;
 
 		makeRandomNumber();
@@ -21,8 +20,8 @@ public class Game {
 
 	// 사용자의 입력값을 임의로 준 생성자
 	public Game(int[] userEnterNumberArray) {
-		strike = 0;
-		ball = 0;
+		strikeCount = 0;
+		ballCount = 0;
 		answerCount = 0;
 
 		for (int i = 0; i < userEnterNumberArray.length; i++) {
@@ -37,7 +36,6 @@ public class Game {
 	// 게임 실행 메소드
 	public void play() {
 		scanner = new Scanner(System.in);
-
 		printString("야구 게임을 시작합니다!");
 		printString("서로 다른 3개의 숫자를 입력해 주세요.");
 
@@ -107,13 +105,13 @@ public class Game {
 	public void setStrikeCount() {
 		for (int i = 0; i < randomNumberArray.length; i++) {
 			if (randomNumberArray[i] == userNumberArray[i]) {
-				strike++;
+				strikeCount++;
 			}
 		}
 	}
 
 	public int getStrikeCount() {
-		return strike;
+		return strikeCount;
 	}
 
 	public void setBallCount() {
@@ -121,7 +119,7 @@ public class Game {
 			for (int j = 0; j < userNumberArray.length; j++) {
 				if (i != j) {
 					if (randomNumberArray[i] == userNumberArray[j]) {
-						ball++;
+						ballCount++;
 					}
 				}
 			}
@@ -129,16 +127,16 @@ public class Game {
 	}
 
 	public void initializeBaseballCount() {
-		strike = 0;
-		ball = 0;
+		strikeCount = 0;
+		ballCount = 0;
 	}
 
 	public int getBallCount() {
-		return ball;
+		return ballCount;
 	}
 
 	public String printBaseballCount() {
-		return strike + "S" + " " + ball + "B";
+		return strikeCount + "S" + " " + ballCount + "B";
 	}
 
 	public boolean isThreeStrike() {
