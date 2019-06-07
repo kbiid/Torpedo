@@ -21,7 +21,6 @@ public class Random {
 	// 랜덤으로 만들어진 숫자를 리턴하는 메소드
 	public int getRandomNumber() {
 		int number = (int) (Math.random() * num) + 1;
-
 		return number;
 	}
 }
