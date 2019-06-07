@@ -42,7 +42,6 @@ public class Baseball {
 				if (ball_count != baseball[j][2]) {
 					break;
 				}
-
 				if (j == baseball.length - 1) {
 					answer_count++;
 				}
@@ -53,7 +52,6 @@ public class Baseball {
 
 	private static int countStrike(int strike, int[] compareValue_array, int[] problemValue_array) {
 		int strikeCount = strike;
-
 		if (compareValue_array.length != problemValue_array.length) {
 			return 0;
 		}
@@ -72,7 +70,6 @@ public class Baseball {
 
 	private static int countBall(int ball, int[] compareValue_array, int[] problemValue_array) {
 		int ballCount = ball;
-
 		if (compareValue_array.length != problemValue_array.length) {
 			return 0;
 		}
@@ -93,10 +90,9 @@ public class Baseball {
 	private static int[] setArray(int[] array, int value) { // 배열에 값을 넣어주기 위한 메소드
 		int num = 1;
 		int tmp;
-
-		for (int i = 0; i < array.length - 1; i++)
+		for (int i = 0; i < array.length - 1; i++) {
 			num *= 10;
-
+		}
 		tmp = value;
 
 		for (int i = 0; i < array.length; i++) {
@@ -104,18 +100,16 @@ public class Baseball {
 				array[i] = tmp / num;
 				tmp = value % num;
 				num /= 10;
-			} else if (num == 1)
+			} else if (num == 1) {
 				array[i] = tmp;
+			}
 		}
-
 		return array;
 	}
 
 	public static void main(String[] args) {
 		int[][] baseball = { { 123, 1, 1 }, { 356, 1, 0 }, { 327, 2, 0 }, { 489, 0, 1 } };
-
 		int result = solution(baseball);
-
 		System.out.println(result);
 	}
 
