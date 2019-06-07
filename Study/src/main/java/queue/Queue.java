@@ -1,7 +1,6 @@
 package queue;
 
 public class Queue {
-
 	private Node front;
 	private Node rear;
 	private int size;
@@ -34,16 +33,13 @@ public class Queue {
 			rear.setPreviousNode(newNode);
 			rear = newNode;
 		}
-
 		size++;
 	}
 
-	public Node deQueue() {
+	public Object deQueue() {
 		if (isEmpty()) {
-			System.out.println("큐가 비어있습니다.");
-			return null;
+			return new NullPointerException("Queue is Empty");
 		}
-
 		Node node;
 
 		if (getSize() == 1) {
@@ -56,11 +52,14 @@ public class Queue {
 		}
 		size--;
 
-		return node;
+		return node.getData();
 	}
 
-	public Node peek() {
-		return front;
-	}
+	public Object peek() {
+		if (isEmpty()) {
+			return new NullPointerException("Queue is Empty");
+		}
 
+		return front.getData();
+	}
 }
