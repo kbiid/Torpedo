@@ -1,7 +1,6 @@
 package doublylinkedlist;
 
 public class DoublyLinkedList {
-
 	private Node head;
 	private int size;
 
@@ -12,7 +11,6 @@ public class DoublyLinkedList {
 
 	public void addFirst(Object data) {
 		Node node = new Node(data);
-
 		node.setNextNode(head.getNextNode());
 
 		if (head.getNextNode() != null) {
@@ -25,12 +23,22 @@ public class DoublyLinkedList {
 		size++;
 	}
 
+	public boolean isRightIndex(int index) {
+		if (index < 0 || index > size) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 	public void addByIndex(int index, Object data) {
+		if (!isRightIndex(index)) {
+			throw new IndexOutOfBoundsException("index Error");
+		}
 		if (index == 0) {
 			addFirst(data);
 			return;
 		}
-
 		Node previousNode = getNodeByIndex(index - 1);
 		Node nextNode = previousNode.getNextNode();
 
@@ -45,7 +53,6 @@ public class DoublyLinkedList {
 		} else {
 			head.setPreviousNode(newNode);
 		}
-
 		size++;
 	}
 
@@ -60,17 +67,15 @@ public class DoublyLinkedList {
 			head.setNextNode(node);
 			node.setPreviousNode(head);
 		}
-
 		head.setPreviousNode(node);
 
 		size++;
 	}
 
 	public Node getNodeByIndex(int index) {
-		if (index < 0 || index > size) {
-			return null;
+		if (!isRightIndex(index)) {
+			throw new IndexOutOfBoundsException("index Error");
 		}
-
 		Node node = head;
 
 		if (index < (size / 2)) {
@@ -92,10 +97,8 @@ public class DoublyLinkedList {
 
 	public Node deleteFirst() {
 		if (head.getNextNode() == null) {
-			System.out.println("이 doublyLinkedList에는 노드가 존재하지 않습니다.");
-			return null;
+			throw new NullPointerException("DoublyLinkedList is Empty!!");
 		}
-
 		Node firstNode = getNodeByIndex(0);
 
 		if (size == 1) {
@@ -105,16 +108,14 @@ public class DoublyLinkedList {
 			head.setNextNode(head.getNextNode().getNextNode());
 			head.getNextNode().setPreviousNode(head);
 		}
-
 		size--;
 
 		return firstNode;
 	}
 
 	public Node deleteByIndex(int index) {
-		if (index < 0 || index >= size) {
-			System.out.println("index 오류 입니다.");
-			return null;
+		if (!isRightIndex(index)) {
+			throw new IndexOutOfBoundsException("index Error");
 		} else if (index == 0) {
 			return deleteFirst();
 		}
@@ -130,7 +131,6 @@ public class DoublyLinkedList {
 		} else {
 			head.setPreviousNode(prev);
 		}
-
 		size--;
 
 		return removeNode;
@@ -138,12 +138,10 @@ public class DoublyLinkedList {
 
 	public Node deleteLast() {
 		if (size == 0) {
-			System.out.println("비어있는 리스트 입니다.");
-			return null;
+			throw new NullPointerException("DoublyLinkedList is Empty!!");
 		} else if (size == 1) {
 			return deleteFirst();
 		}
-
 		Node removeNode = head.getPreviousNode();
 		Node previousNode = removeNode.getPreviousNode();
 
@@ -159,7 +157,6 @@ public class DoublyLinkedList {
 		if (head.getNextNode() == null && head.getPreviousNode() == null) {
 			return "[]";
 		}
-
 		Node temp = head;
 		String str = "[";
 
@@ -167,7 +164,6 @@ public class DoublyLinkedList {
 			str += temp.getData() + ",";
 			temp = temp.getNextNode();
 		}
-
 		str += temp.getData();
 
 		return str + "]";

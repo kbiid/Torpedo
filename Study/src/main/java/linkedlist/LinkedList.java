@@ -112,6 +112,9 @@ public class LinkedList {
 	}
 
 	public Object remove(int index) {
+		if (!isRightIndex(index)) {
+			throw new IndexOutOfBoundsException("index Error");
+		}
 		if (index == 0) {
 			return removeFirstNode();
 		}
