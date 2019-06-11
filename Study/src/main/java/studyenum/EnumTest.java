@@ -1,6 +1,6 @@
 package studyenum;
 
-public class enumTest {
+public class EnumTest {
 	public static void main(String[] args) {
 		testDeveloper();
 		testDeveloperHaneEnum();
