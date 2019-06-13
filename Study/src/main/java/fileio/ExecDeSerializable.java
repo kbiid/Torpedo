@@ -44,9 +44,7 @@ public class ExecDeSerializable {
 		try {
 			fin = new FileInputStream(makefile);
 			oin = new ObjectInputStream(fin);
-
 			readEmployee(emp, oin);
-			
 			fin.close();
 			oin.close();
 		} catch (IOException e) {
@@ -62,7 +60,6 @@ public class ExecDeSerializable {
 				emp = (Employee) oin.readObject();
 			}
 		} catch (IOException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
