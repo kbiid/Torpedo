@@ -7,7 +7,7 @@ public class TreeMapExample {
 	public static void main(String[] args) {
 		TreeMap<Integer, String> treeMap = new TreeMap<>();
 
-		treeMap.put(30, "삼십");
+		treeMap.put(30, null);
 		treeMap.put(10, "십");
 		treeMap.put(40, "사십");
 		treeMap.put(20, "이십");
