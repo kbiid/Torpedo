@@ -9,7 +9,7 @@ import java.io.IOException;
  *
  */
 public class Main {
-	public static final String DIR = "E:\\test\\";
+	public static final String DIR = "D:\\test\\";
 	public static final String FILE_NAME = "saveInfo.dat";
 	public static final String FILE_NAME_INTERN = "saveInfo2.dat";
 
