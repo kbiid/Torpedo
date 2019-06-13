@@ -18,6 +18,10 @@ public class ExecDeSerializable {
 		employeeList = new ArrayList<>();
 	}
 
+	public void setMakefile(String str) {
+		makefile = new File(str);
+	}
+
 	public boolean checkDir() {
 		if (dirfile == null || !dirfile.exists()) {
 			return false;
@@ -70,7 +74,9 @@ public class ExecDeSerializable {
 
 	public void showEmployeeList() {
 		for (Employee employee : employeeList) {
-			System.out.println(employee);
+			System.out.print(employee);
 		}
+		System.out.println("----------------------------------------------------------------------");
+		employeeList.clear();
 	}
 }

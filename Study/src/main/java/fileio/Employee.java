@@ -42,7 +42,7 @@ public class Employee implements Serializable {
 
 	@Override
 	public String toString() {
-		return String.format("Employee{name='%s', age='%d', phoneNumber='%s', department='%s', email='%s'}", name, age,
+		return String.format("Employee{name='%s', age='%d', phoneNumber='%s', department='%s', email='%s'}\n", name, age,
 				phoneNumber, department, email);
 	}
 }
