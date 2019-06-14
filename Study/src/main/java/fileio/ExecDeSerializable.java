@@ -66,7 +66,7 @@ public class ExecDeSerializable implements Serialize {
 		}
 	}
 
-	public void readEmployee(Employee emp, ObjectInputStream oin){
+	public void readEmployee(Employee emp, ObjectInputStream oin) {
 		try {
 			while (true) {
 				emp = (Employee) oin.readObject();
@@ -91,5 +91,4 @@ public class ExecDeSerializable implements Serialize {
 		System.out.println("----------------------------------------------------------------------");
 		employeeList.clear();
 	}
-
 }

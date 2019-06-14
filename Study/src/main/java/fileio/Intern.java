@@ -13,5 +13,4 @@ public class Intern extends Employee {
 	public String toString() {
 		return String.format("Intern [term=%d] ", term) + super.toString();
 	}
-
 }
