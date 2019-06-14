@@ -1,4 +1,4 @@
-package copy;
+package copy.array;
 
 public class TestClass {
 	public static void main(String[] args) {

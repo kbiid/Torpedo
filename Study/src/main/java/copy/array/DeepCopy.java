@@ -1,4 +1,4 @@
-package copy;
+package copy.array;
 
 public class DeepCopy {
 	private int[] arr;

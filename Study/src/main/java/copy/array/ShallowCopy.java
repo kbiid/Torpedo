@@ -1,4 +1,4 @@
-package copy;
+package copy.array;
 
 public class ShallowCopy {
 	private int[] arr;
@@ -9,7 +9,6 @@ public class ShallowCopy {
 
 	public int[] shallowCopy(int arr[]) {
 		this.arr = arr;
-
 		return arr;
 	}
 }
