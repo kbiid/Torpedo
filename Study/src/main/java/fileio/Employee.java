@@ -9,7 +9,7 @@ import java.io.Serializable;
  *
  */
 public class Employee implements Serializable {
-	private static final long serialVersionUID = -5646784422191982965L;
+	private static final long serialVersionUID = 1L;
 	private String name;
 	private int age;
 	private String phoneNumber;
@@ -23,26 +23,30 @@ public class Employee implements Serializable {
 		this.department = department;
 		this.email = email;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
+
 	public int getAge() {
 		return age;
 	}
+
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
+
 	public String getDepartMent() {
 		return department;
 	}
+
 	public String getEmail() {
 		return email;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("Employee{name='%s', age='%d', phoneNumber='%s', department='%s', email='%s'}\n", name, age,
-				phoneNumber, department, email);
+		return String.format("Employee{name='%s', age='%d', phoneNumber='%s', department='%s', email='%s'} \n", name,
+				age, phoneNumber, department, email);
 	}
 }

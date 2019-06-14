@@ -11,7 +11,7 @@ public class Intern extends Employee {
 
 	@Override
 	public String toString() {
-		return String.format("Employee{name='%s', age='%d', phoneNumber='%s', department='%s', email='%s', term='%d'}\n",
-				getName(), getAge(), getPhoneNumber(), getDepartMent(), getEmail(), term);
+		return String.format("Intern [term=%d] ", term) + super.toString();
 	}
+
 }

@@ -7,19 +7,25 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
-public class ExecDeSerializable {
+public class ExecDeSerializable implements Serialize {
 	private File dirfile;
 	private File makefile;
 	private ArrayList<Employee> employeeList;
 
 	public ExecDeSerializable() {
-		dirfile = new File(Main.DIR);
-		makefile = new File(Main.DIR + Main.FILE_NAME);
+		dirfile = new File(DIR);
+		setFileSawonPath();
 		employeeList = new ArrayList<>();
 	}
 
-	public void setMakefile(String str) {
-		makefile = new File(str);
+	@Override
+	public void setFileSawonPath() {
+		makefile = new File(DIR + FILE_NAME);
+	}
+
+	@Override
+	public void setFilePathIntern() {
+		makefile = new File(DIR + FILE_NAME_INTERN);
 	}
 
 	public boolean checkDir() {
@@ -40,7 +46,6 @@ public class ExecDeSerializable {
 		if (!checkDir() || !checkFile()) {
 			throw new NullPointerException("dirfile 변수가 NULL!");
 		}
-
 		Employee emp = null;
 		FileInputStream fin = null;
 		ObjectInputStream oin = null;
@@ -49,20 +54,27 @@ public class ExecDeSerializable {
 			fin = new FileInputStream(makefile);
 			oin = new ObjectInputStream(fin);
 			readEmployee(emp, oin);
-			fin.close();
-			oin.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				fin.close();
+				oin.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
-	public void readEmployee(Employee emp, ObjectInputStream oin) throws EOFException {
+	public void readEmployee(Employee emp, ObjectInputStream oin){
 		try {
-			emp = (Employee) oin.readObject();
-			while (emp != null) {
-				addList(emp);
+			while (true) {
 				emp = (Employee) oin.readObject();
+				addList(emp);
 			}
+		} catch (EOFException e) {
+//			e.printStackTrace();
+			return;
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -79,4 +91,5 @@ public class ExecDeSerializable {
 		System.out.println("----------------------------------------------------------------------");
 		employeeList.clear();
 	}
+
 }

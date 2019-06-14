@@ -9,10 +9,6 @@ import java.io.IOException;
  *
  */
 public class Main {
-	public static final String DIR = "D:\\test\\";
-	public static final String FILE_NAME = "saveInfo.dat";
-	public static final String FILE_NAME_INTERN = "saveInfo2.dat";
-
 	public static void main(String[] args) throws IOException {
 		ExecSerializable serialize = new ExecSerializable();
 		serialize.serializationNotIntern();
@@ -21,10 +17,10 @@ public class Main {
 		deserialize.deSelialization();
 		deserialize.showEmployeeList();
 
-		serialize.setMakefile(DIR + FILE_NAME_INTERN);
+		serialize.setFilePathIntern();
 		serialize.serializationIntern();
 
-		deserialize.setMakefile(DIR + FILE_NAME_INTERN);
+		deserialize.setFilePathIntern();
 		deserialize.deSelialization();
 		deserialize.showEmployeeList();
 	}

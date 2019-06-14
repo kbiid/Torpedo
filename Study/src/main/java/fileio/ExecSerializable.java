@@ -6,19 +6,25 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-public class ExecSerializable {
+public class ExecSerializable implements Serialize {
 	private File dirfile;
 	private File makefile;
 	private ArrayList<Employee> employeeList;
 
 	public ExecSerializable() {
-		dirfile = new File(Main.DIR);
-		makefile = new File(Main.DIR + Main.FILE_NAME);
+		dirfile = new File(DIR);
+		setFileSawonPath();
 		employeeList = new ArrayList<>();
 	}
-	
-	public void setMakefile(String str) {
-		makefile = new File(str);
+
+	@Override
+	public void setFileSawonPath() {
+		makefile = new File(DIR + FILE_NAME);
+	}
+
+	@Override
+	public void setFilePathIntern() {
+		makefile = new File(DIR + FILE_NAME_INTERN);
 	}
 
 	// 사원 입력 메소드
@@ -29,12 +35,13 @@ public class ExecSerializable {
 		employeeList.add(new Employee("김광현", 30, "010-4789-5131", "개발부", "kim@naver.com"));
 		employeeList.add(new Employee("김성현", 28, "010-7465-1459", "인사부", "sung@naver.com"));
 	}
-	
+
+	// 인턴 입력 메소드
 	public void makeIntern() {
-		employeeList.add(new Intern("김인턴", 20, "010-3475-1496", "개발부", "intern@naver.com",6));
-		employeeList.add(new Intern("이인턴", 27, "010-8754-7894", "인사부", "lee@naver.com",12));
-		employeeList.add(new Intern("심인턴", 32, "010-8522-0537", "영업부", "sim@naver.com",8));
-		employeeList.add(new Intern("박인턴", 24, "010-3694-7891", "인사부", "park@naver.com",12));
+		employeeList.add(new Intern("김인턴", 20, "010-3475-1496", "개발부", "intern@naver.com", 6));
+		employeeList.add(new Intern("이인턴", 27, "010-8754-7894", "인사부", "lee@naver.com", 12));
+		employeeList.add(new Intern("심인턴", 32, "010-8522-0537", "영업부", "sim@naver.com", 8));
+		employeeList.add(new Intern("박인턴", 24, "010-3694-7891", "인사부", "park@naver.com", 12));
 	}
 
 	// 디렉토리를 확인하고 만드는 메소드
@@ -48,7 +55,7 @@ public class ExecSerializable {
 			if (dirfile.mkdir()) {
 				System.out.println("폴더 생성 성공");
 			} else {
-				System.out.println("폴더 생성 실패");
+				throw new NullPointerException("폴더 생성 실패!");
 			}
 		} else {
 			System.out.println("폴더가 이미 존재합니다.");
@@ -67,7 +74,7 @@ public class ExecSerializable {
 				if (makefile.createNewFile()) {
 					System.out.println("파일 생성 성공");
 				} else {
-					System.out.println("파일 생성 실패");
+					throw new NullPointerException("파일 생성 실패!");
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -75,7 +82,6 @@ public class ExecSerializable {
 		} else {
 			System.out.println("파일이 이미 존재합니다.");
 		}
-
 	}
 
 	// 직렬화 후 파일에 저장하는 메소드
@@ -89,13 +95,18 @@ public class ExecSerializable {
 			fout = new FileOutputStream(makefile);
 			oout = new ObjectOutputStream(fout);
 			writeEmployee(oout);
-			fout.close();
-			oout.close();
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				fout.close();
+				oout.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
-	
+
 	// 파일에 데이터를 입력하는 메소드
 	public void writeEmployee(ObjectOutputStream oout) {
 		for (Employee employee : employeeList) {
@@ -116,4 +127,5 @@ public class ExecSerializable {
 		makeIntern();
 		doSelialization();
 	}
+
 }
