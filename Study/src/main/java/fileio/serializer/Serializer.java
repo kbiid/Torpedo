@@ -1,4 +1,4 @@
-package fileio;
+package fileio.serializer;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -6,25 +6,74 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-public class ExecSerializable implements Serialize {
+import fileio.Employee;
+import fileio.Intern;
+import fileio.Serialize;
+
+public abstract class Serializer implements Serialize {
 	private File dirfile;
 	private File makefile;
 	private ArrayList<Employee> employeeList;
+	private String fileName = "sawon-v1.txt";
+	private String fileNameIntern = "sawon-v2.txt";
+	private ArrayList<String> itemList;
 
-	public ExecSerializable() {
+	public Serializer() {
+		itemList = new ArrayList<>();
+		initItemList();
 		dirfile = new File(DIR);
-		setFileSawonPath();
 		employeeList = new ArrayList<>();
+	}
+
+	public void initItemList() {
+		itemList.add("사원이름");
+		itemList.add("나이");
+		itemList.add("전화번호");
+		itemList.add("부서");
+		itemList.add("이메일");
+		itemList.add("계약기간");
+	}
+
+	public ArrayList<String> getItemList() {
+		return itemList;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getFileNameIntern() {
+		return fileNameIntern;
+	}
+
+	public void setFileNameIntern(String fileNameIntern) {
+		this.fileNameIntern = fileNameIntern;
 	}
 
 	@Override
 	public void setFileSawonPath() {
-		makefile = new File(DIR + FILE_NAME);
+		makefile = new File(DIR + fileName);
 	}
 
 	@Override
 	public void setFilePathIntern() {
-		makefile = new File(DIR + FILE_NAME_INTERN);
+		makefile = new File(DIR + fileNameIntern);
+	}
+
+	public File getDirfile() {
+		return dirfile;
+	}
+
+	public File getMakefile() {
+		return makefile;
+	}
+
+	public ArrayList<Employee> getEmployeeList() {
+		return employeeList;
 	}
 
 	// 사원 입력 메소드
@@ -84,46 +133,24 @@ public class ExecSerializable implements Serialize {
 		}
 	}
 
-	// 직렬화 후 파일에 저장하는 메소드
-	public void doSelialization() {
-		makeDir();
-		makeFile();
+	/**
+	 * 직렬화 후 파일에 저장하는 메소드
+	 */
+	protected abstract void doSelialization();
 
-		FileOutputStream fout = null;
-		ObjectOutputStream oout = null;
-		try {
-			fout = new FileOutputStream(makefile);
-			oout = new ObjectOutputStream(fout);
-			writeEmployee(oout);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				fout.close();
-				oout.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	// 파일에 데이터를 입력하는 메소드
-	public void writeEmployee(ObjectOutputStream oout) {
-		for (Employee employee : employeeList) {
-			try {
-				oout.writeObject(employee);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+	/**
+	 * 파일에 데이터를 입력하는 메소드
+	 */
+	protected abstract void writeEmployee(Object obj);
 
 	public void serializationNotIntern() {
+		setFileSawonPath();
 		makeEmployee();
 		doSelialization();
 	}
 
 	public void serializationIntern() {
+		setFileSawonPath();
 		makeIntern();
 		doSelialization();
 	}

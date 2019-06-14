@@ -2,6 +2,8 @@ package fileio;
 
 import java.io.IOException;
 
+import fileio.serializer.Serializer;
+
 /**
  * 프로그램 실행시키기 위한 메인 클래스
  * 
@@ -10,18 +12,20 @@ import java.io.IOException;
  */
 public class Main {
 	public static void main(String[] args) throws IOException {
-		ExecSerializable serialize = new ExecSerializable();
+		CheckArg check = new CheckArg();
+		Serializer serialize = check.checkArgs("cvs");
+		check.checkNull(serialize);
 		serialize.serializationNotIntern();
 
-		ExecDeSerializable deserialize = new ExecDeSerializable();
-		deserialize.deSelialization();
-		deserialize.showEmployeeList();
-
-		serialize.setFilePathIntern();
-		serialize.serializationIntern();
-
-		deserialize.setFilePathIntern();
-		deserialize.deSelialization();
-		deserialize.showEmployeeList();
+//		DeSerializer deserialize = new DeSerializer();
+//		deserialize.deSelialization();
+//		deserialize.showEmployeeList();
+//
+//		serialize.setFilePathIntern();
+//		serialize.serializationIntern();
+//
+//		deserialize.setFilePathIntern();
+//		deserialize.deSelialization();
+//		deserialize.showEmployeeList();
 	}
 }

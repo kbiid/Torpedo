@@ -9,6 +9,10 @@ public class Intern extends Employee {
 		this.term = term;
 	}
 
+	public int getTerm() {
+		return term;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("Intern [term=%d] ", term) + super.toString();
