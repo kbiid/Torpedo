@@ -101,17 +101,65 @@ public class Car implements Cloneable {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (obj == null) {
-			return false;
-		}
-		Car car = (Car) obj;
-
-		if (name.equals(car.getName()) && (price == car.getPrice()) && color.equals(car.getColor())
-				&& (year == car.getYear()) && (weight == car.getWeight()) && list.equals(car.getList())) {
-			return true;
-		}
-		return false;
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((color == null) ? 0 : color.hashCode());
+		result = prime * result + ((list == null) ? 0 : list.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + price;
+		long temp;
+		temp = Double.doubleToLongBits(weight);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + year;
+		return result;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Car other = (Car) obj;
+		if (color == null) {
+			if (other.color != null)
+				return false;
+		} else if (!color.equals(other.color))
+			return false;
+		if (list == null) {
+			if (other.list != null)
+				return false;
+		} else if (!list.equals(other.list))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (price != other.price)
+			return false;
+		if (Double.doubleToLongBits(weight) != Double.doubleToLongBits(other.weight))
+			return false;
+		if (year != other.year)
+			return false;
+		return true;
+	}
+
+//	@Override
+//	public boolean equals(Object obj) {
+//		if (obj == null) {
+//			return false;
+//		}
+//		Car car = (Car) obj;
+//
+//		if (name.equals(car.getName()) && (price == car.getPrice()) && color.equals(car.getColor())
+//				&& (year == car.getYear()) && (weight == car.getWeight()) && list.equals(car.getList())) {
+//			return true;
+//		}
+//		return false;
+//	}
 
 }
