@@ -3,9 +3,11 @@ package fileio;
 import fileio.deseralizer.ByteDeSerializer;
 import fileio.deseralizer.CSVDeSerializer;
 import fileio.deseralizer.DeSerializer;
+import fileio.deseralizer.XMLDeSerializer;
 import fileio.serializer.ByteSerializer;
 import fileio.serializer.CSVSerializer;
 import fileio.serializer.Serializer;
+import fileio.serializer.XMLSerializer;
 
 public class CheckArg {
 	private Serializer serializer;
@@ -22,9 +24,7 @@ public class CheckArg {
 			serializer = new CSVSerializer();
 			break;
 		case "xml":
-			serializer = new ByteSerializer();
-			serializer.setFileName("sawon-v1.xml");
-			serializer.setFileNameIntern("sawon-v2.xml");
+			serializer = new XMLSerializer();
 			break;
 		case "json":
 			serializer = new ByteSerializer();
@@ -48,9 +48,7 @@ public class CheckArg {
 			deserializer = new CSVDeSerializer();
 			break;
 		case "xml":
-			deserializer = new ByteDeSerializer();
-			deserializer.setFileName("sawon-v1.xml");
-			deserializer.setFileNameIntern("sawon-v2.xml");
+			deserializer = new XMLDeSerializer();
 			break;
 		case "json":
 			deserializer = new ByteDeSerializer();
