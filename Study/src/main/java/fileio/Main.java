@@ -2,6 +2,7 @@ package fileio;
 
 import java.io.IOException;
 
+import fileio.deseralizer.DeSerializer;
 import fileio.serializer.Serializer;
 
 /**
@@ -13,19 +14,18 @@ import fileio.serializer.Serializer;
 public class Main {
 	public static void main(String[] args) throws IOException {
 		CheckArg check = new CheckArg();
-		Serializer serialize = check.checkArgs("cvs");
+		Serializer serialize = check.checkArgs("csv");
 		check.checkNull(serialize);
 		serialize.serializationNotIntern();
 
-//		DeSerializer deserialize = new DeSerializer();
-//		deserialize.deSelialization();
-//		deserialize.showEmployeeList();
-//
-//		serialize.setFilePathIntern();
-//		serialize.serializationIntern();
-//
-//		deserialize.setFilePathIntern();
-//		deserialize.deSelialization();
-//		deserialize.showEmployeeList();
+		DeSerializer deSerialize = check.checkArgsDeSerializer("csv");
+		check.checkNullDeSerializer(deSerialize);
+		deSerialize.deSerializationNotIntern();
+		deSerialize.showEmployeeList();
+
+		serialize.serializationIntern();
+
+		deSerialize.deSrializationIntern();
+		deSerialize.showEmployeeList();
 	}
 }

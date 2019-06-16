@@ -1,7 +1,7 @@
 package fileio;
 
 public interface Serialize {
-	public static final String DIR = "D:\\test\\";
+	public static final String DIR = "E:\\test\\";
 
 	public void setFileSawonPath();
 

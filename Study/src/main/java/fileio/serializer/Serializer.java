@@ -1,9 +1,7 @@
 package fileio.serializer;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import fileio.Employee;
@@ -14,8 +12,8 @@ public abstract class Serializer implements Serialize {
 	private File dirfile;
 	private File makefile;
 	private ArrayList<Employee> employeeList;
-	private String fileName = "sawon-v1.txt";
-	private String fileNameIntern = "sawon-v2.txt";
+	private String fileName;
+	private String fileNameIntern;
 	private ArrayList<String> itemList;
 
 	public Serializer() {
@@ -150,7 +148,7 @@ public abstract class Serializer implements Serialize {
 	}
 
 	public void serializationIntern() {
-		setFileSawonPath();
+		setFilePathIntern();
 		makeIntern();
 		doSelialization();
 	}

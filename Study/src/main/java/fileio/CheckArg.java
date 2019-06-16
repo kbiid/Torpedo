@@ -1,11 +1,10 @@
 package fileio;
 
-import java.io.ObjectInputStream;
-
 import fileio.deseralizer.ByteDeSerializer;
+import fileio.deseralizer.CSVDeSerializer;
 import fileio.deseralizer.DeSerializer;
 import fileio.serializer.ByteSerializer;
-import fileio.serializer.CVSSerializer;
+import fileio.serializer.CSVSerializer;
 import fileio.serializer.Serializer;
 
 public class CheckArg {
@@ -18,16 +17,9 @@ public class CheckArg {
 		switch (str.toLowerCase()) {
 		case "byte":
 			serializer = new ByteSerializer();
-			serializer.setFileName("sawon-v1.txt");
-			serializer.setFileNameIntern("sawon-v2.txt");
-			deserializer = new ByteDeSerializer();
-			deserializer.setFileName("sawon-v1.txt");
-			deserializer.setFileNameIntern("sawon-v2.txt");
 			break;
-		case "cvs":
-			serializer = new CVSSerializer();
-			serializer.setFileName("sawon-v1.cvs");
-			serializer.setFileNameIntern("sawon-v2.cvs");
+		case "csv":
+			serializer = new CSVSerializer();
 			break;
 		case "xml":
 			serializer = new ByteSerializer();
@@ -42,12 +34,44 @@ public class CheckArg {
 		default:
 			break;
 		}
-
 		return serializer;
+	}
+
+	public DeSerializer checkArgsDeSerializer(String str) {
+		deserializer = null;
+
+		switch (str.toLowerCase()) {
+		case "byte":
+			deserializer = new ByteDeSerializer();
+			break;
+		case "csv":
+			deserializer = new CSVDeSerializer();
+			break;
+		case "xml":
+			deserializer = new ByteDeSerializer();
+			deserializer.setFileName("sawon-v1.xml");
+			deserializer.setFileNameIntern("sawon-v2.xml");
+			break;
+		case "json":
+			deserializer = new ByteDeSerializer();
+			deserializer.setFileName("sawon-v1.json");
+			deserializer.setFileNameIntern("sawon-v2.json");
+			break;
+		default:
+			break;
+		}
+
+		return deserializer;
 	}
 
 	public void checkNull(Serializer serializer) {
 		if (serializer == null) {
+			throw new NullPointerException("적절치 않은 문자 입력");
+		}
+	}
+
+	public void checkNullDeSerializer(DeSerializer deserializer) {
+		if (deserializer == null) {
 			throw new NullPointerException("적절치 않은 문자 입력");
 		}
 	}

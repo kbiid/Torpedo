@@ -1,10 +1,6 @@
 package fileio.deseralizer;
 
-import java.io.EOFException;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 import fileio.Employee;
@@ -14,8 +10,8 @@ public abstract class DeSerializer implements Serialize {
 	private File dirfile;
 	private File makefile;
 	private ArrayList<Employee> employeeList;
-	private String fileName = "sawon-v1.txt";
-	private String fileNameIntern = "sawon-v2.txt";
+	private String fileName;
+	private String fileNameIntern;
 
 	public DeSerializer() {
 		dirfile = new File(DIR);
@@ -88,8 +84,8 @@ public abstract class DeSerializer implements Serialize {
 	}
 
 	public abstract void deSelialization();
-	
-	public abstract void readEmployee(Employee emp, ObjectInputStream oin);
+
+	public abstract void readEmployee(Employee emp, Object oin);
 
 	public void addList(Employee employee) {
 		employeeList.add(employee);
@@ -101,5 +97,15 @@ public abstract class DeSerializer implements Serialize {
 		}
 		System.out.println("----------------------------------------------------------------------");
 		employeeList.clear();
+	}
+	
+	public void deSerializationNotIntern() {
+		setFileSawonPath();
+		deSelialization();
+	}
+
+	public void deSrializationIntern() {
+		setFilePathIntern();
+		deSelialization();
 	}
 }

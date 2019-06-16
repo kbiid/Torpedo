@@ -7,6 +7,12 @@ import java.io.ObjectOutputStream;
 import fileio.Employee;
 
 public class ByteSerializer extends Serializer {
+	
+	public ByteSerializer() {
+		setFileName("sawon-v1.txt");
+		setFileNameIntern("sawon-v2.txt");
+	}
+	
 	// 직렬화 후 파일에 저장하는 메소드
 	public void doSelialization() {
 		makeDir();
@@ -34,7 +40,6 @@ public class ByteSerializer extends Serializer {
 	protected void writeEmployee(Object obj) {
 		if ((obj instanceof ObjectOutputStream)) {
 			ObjectOutputStream oout = (ObjectOutputStream) obj;
-
 			for (Employee employee : super.getEmployeeList()) {
 				try {
 					oout.writeObject(employee);
