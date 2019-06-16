@@ -1,7 +1,6 @@
 package fileio;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 /**
  * 사원에 관한 클래스

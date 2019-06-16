@@ -25,16 +25,14 @@ public class CSVDeSerializer extends DeSerializer {
 	@Override
 	public void deSelialization() {
 		Employee emp = null;
-		CSVReader reader = null;
 
-		try {
+		try (CSVReader reader = new CSVReader(new InputStreamReader(new FileInputStream(getMakefile()), "EUC-KR"))) {
 			// UTF-8
-			reader = new CSVReader(new InputStreamReader(new FileInputStream(getMakefile()), "EUC-KR"));
 			readEmployee(emp, reader);
 			setDataToEmployee();
-		} catch (UnsupportedEncodingException e) {
+		} catch (FileNotFoundException | UnsupportedEncodingException e) {
 			e.printStackTrace();
-		} catch (FileNotFoundException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			data.clear();

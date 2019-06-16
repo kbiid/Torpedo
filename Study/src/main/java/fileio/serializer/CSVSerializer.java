@@ -1,7 +1,6 @@
 package fileio.serializer;
 
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -67,21 +66,13 @@ public class CSVSerializer extends Serializer {
 		makeDir();
 		makeFile();
 		setEmployeeData();
-		CSVWriter cw = null;
 
-		try {
-//			cw = new CSVWriter(new FileWriter(getMakefile()));
-			cw = new CSVWriter(new OutputStreamWriter(new FileOutputStream(getMakefile()), "EUC-KR"));
+		try (CSVWriter cw = new CSVWriter(new OutputStreamWriter(new FileOutputStream(getMakefile()), "EUC-KR"))) {
 			writeEmployee(cw);
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		} finally {
-			try {
-				data.clear();
-				cw.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			data.clear();
 		}
 	}
 
