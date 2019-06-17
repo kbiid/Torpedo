@@ -10,9 +10,9 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 
-import fileio.Employee;
-import fileio.Intern;
-import fileio.Main;
+import fileio.Serialize;
+import fileio.model.Employee;
+import fileio.model.Intern;
 
 public class JSONDeSerializer extends DeSerializer {
 	public JSONDeSerializer() {
@@ -29,7 +29,7 @@ public class JSONDeSerializer extends DeSerializer {
 			JsonObject jsonObj = (JsonObject) obj;
 			readEmployee(emp, jsonObj);
 		} catch (JsonIOException | JsonSyntaxException | FileNotFoundException e) {
-			Main.invalidFileLogger.error("JSONDeSerializer Exception : " + e);
+			Serialize.invalidFileLogger.error("JSONDeSerializer Exception : " + e);
 		}
 	}
 
@@ -43,7 +43,7 @@ public class JSONDeSerializer extends DeSerializer {
 			try {
 				throw new InvalidClassException("JsonObject가 아님");
 			} catch (InvalidClassException e) {
-				Main.invalidFileLogger.error("JSONDeSerializer Exception : " + e);
+				Serialize.invalidFileLogger.error("JSONDeSerializer Exception : " + e);
 			}
 		}
 		JsonArray array = ((JsonArray) jsonObj.get("employee"));

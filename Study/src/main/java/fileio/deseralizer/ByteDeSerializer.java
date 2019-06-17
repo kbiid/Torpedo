@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.io.InvalidClassException;
 import java.io.ObjectInputStream;
 
-import fileio.Employee;
-import fileio.Main;
+import fileio.Serialize;
+import fileio.model.Employee;
 
 public class ByteDeSerializer extends DeSerializer {
 	public ByteDeSerializer() {
@@ -26,7 +26,7 @@ public class ByteDeSerializer extends DeSerializer {
 				ObjectInputStream oin = new ObjectInputStream(fin)) {
 			readEmployee(emp, oin);
 		} catch (IOException e) {
-			Main.invalidFileLogger.error("ByteDeSerializer Exception : " + e);
+			Serialize.invalidFileLogger.error("ByteDeSerializer Exception : " + e);
 		}
 	}
 
@@ -40,7 +40,7 @@ public class ByteDeSerializer extends DeSerializer {
 			try {
 				throw new InvalidClassException("ObjectInputStream 클래스가 아님");
 			} catch (InvalidClassException e) {
-				Main.invalidFileLogger.error("ByteDeSerializer Exception : " + e);
+				Serialize.invalidFileLogger.error("ByteDeSerializer Exception : " + e);
 			}
 		}
 		try {
@@ -49,9 +49,9 @@ public class ByteDeSerializer extends DeSerializer {
 				addList(emp);
 			}
 		} catch (EOFException e) {
-			Main.invalidFileLogger.error("ByteDeSerializer Exception : " + e);
+			Serialize.invalidFileLogger.error("ByteDeSerializer Exception : " + e);
 		} catch (IOException | ClassNotFoundException e) {
-			Main.invalidFileLogger.error("ByteDeSerializer Exception : " + e);
+			Serialize.invalidFileLogger.error("ByteDeSerializer Exception : " + e);
 		}
 	}
 }

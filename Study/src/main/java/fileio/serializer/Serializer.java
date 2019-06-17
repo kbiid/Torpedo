@@ -5,10 +5,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import fileio.CommonSerializer;
-import fileio.Employee;
-import fileio.Intern;
-import fileio.Main;
 import fileio.Serialize;
+import fileio.model.Employee;
+import fileio.model.Intern;
 
 public abstract class Serializer extends CommonSerializer implements Serialize {
 	private ArrayList<Employee> employeeList;
@@ -53,13 +52,13 @@ public abstract class Serializer extends CommonSerializer implements Serialize {
 		}
 		if (!dirfile.exists()) { // 폴더가 없는 경우
 			if (dirfile.mkdir()) {
-				Main.invalidFileLogger.info("폴더 생성 성공");
+				Serialize.invalidFileLogger.info("폴더 생성 성공");
 			} else {
-				Main.invalidFileLogger.error("폴더 생성 실패");
+				Serialize.invalidFileLogger.error("폴더 생성 실패");
 				throw new NullPointerException("폴더 생성 실패!");
 			}
 		} else {
-			Main.invalidFileLogger.info("폴더가 이미 존재");
+			Serialize.invalidFileLogger.info("폴더가 이미 존재");
 		}
 	}
 
@@ -77,7 +76,7 @@ public abstract class Serializer extends CommonSerializer implements Serialize {
 					throw new NullPointerException("파일 생성 실패!");
 				}
 			} catch (IOException e) {
-				Main.invalidFileLogger.error("Serializer Exception : " + e);
+				Serialize.invalidFileLogger.error("Serializer Exception : " + e);
 			}
 		} else {
 			System.out.println("파일이 이미 존재합니다.");

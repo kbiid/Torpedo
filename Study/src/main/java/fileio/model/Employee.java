@@ -1,4 +1,4 @@
-package fileio;
+package fileio.model;
 
 import java.io.Serializable;
 

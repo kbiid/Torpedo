@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.InvalidClassException;
 import java.io.ObjectOutputStream;
 
-import fileio.Employee;
-import fileio.Main;
+import fileio.Serialize;
+import fileio.model.Employee;
 
 public class ByteSerializer extends Serializer {
 	public ByteSerializer() {
@@ -23,7 +23,7 @@ public class ByteSerializer extends Serializer {
 				ObjectOutputStream oout = new ObjectOutputStream(fout)) {
 			writeEmployee(oout);
 		} catch (Exception e) {
-			Main.invalidFileLogger.error("ByteSerializer Exception : " + e);
+			Serialize.invalidFileLogger.error("ByteSerializer Exception : " + e);
 		}
 	}
 
@@ -35,14 +35,14 @@ public class ByteSerializer extends Serializer {
 				try {
 					oout.writeObject(employee);
 				} catch (IOException e) {
-					Main.invalidFileLogger.error("ByteSerializer IOException : " + e);
+					Serialize.invalidFileLogger.error("ByteSerializer IOException : " + e);
 				}
 			}
 		} else {
 			try {
 				throw new InvalidClassException("ObjectOutputStream 클래스가 아님");
 			} catch (InvalidClassException e) {
-				Main.invalidFileLogger.error("ByteSerializer InvalidClassException : " + e);
+				Serialize.invalidFileLogger.error("ByteSerializer InvalidClassException : " + e);
 			}
 		}
 	}

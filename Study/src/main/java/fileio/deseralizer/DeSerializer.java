@@ -4,8 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 
 import fileio.CommonSerializer;
-import fileio.Employee;
 import fileio.Serialize;
+import fileio.model.Employee;
 
 public abstract class DeSerializer extends CommonSerializer implements Serialize {
 	private ArrayList<Employee> employeeList;

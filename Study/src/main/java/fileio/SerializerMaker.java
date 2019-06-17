@@ -11,7 +11,7 @@ import fileio.serializer.JSONSerializer;
 import fileio.serializer.Serializer;
 import fileio.serializer.XMLSerializer;
 
-public class MakeSerializer {
+public class SerializerMaker {
 	public static Serializer serializer;
 	public static DeSerializer deserializer;
 
@@ -30,7 +30,7 @@ public class MakeSerializer {
 			serializer = new JSONSerializer();
 			break;
 		default:
-			Main.invalidFileLogger.error("makeSerializer : 문자열 입력 오류");
+			Serialize.invalidFileLogger.error("makeSerializer : 문자열 입력 오류");
 			throw new NullPointerException("적절치 않은 문자 입력");
 		}
 	}
@@ -50,7 +50,7 @@ public class MakeSerializer {
 			deserializer = new JSONDeSerializer();
 			break;
 		default:
-			Main.invalidFileLogger.error("makeDeSerializer : 문자열 입력 오류");
+			Serialize.invalidFileLogger.error("makeDeSerializer : 문자열 입력 오류");
 			throw new NullPointerException("적절치 않은 문자 입력");
 		}
 	}

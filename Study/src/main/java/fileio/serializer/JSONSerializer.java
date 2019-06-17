@@ -8,9 +8,9 @@ import java.io.InvalidClassException;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import fileio.Employee;
-import fileio.Intern;
-import fileio.Main;
+import fileio.Serialize;
+import fileio.model.Employee;
+import fileio.model.Intern;
 
 public class JSONSerializer extends Serializer {
 	public JSONSerializer() {
@@ -52,7 +52,7 @@ public class JSONSerializer extends Serializer {
 			try {
 				throw new InvalidClassException("String이 아님");
 			} catch (InvalidClassException e) {
-				Main.invalidFileLogger.error("JSONSerializer InvalidClassException : " + e);
+				Serialize.invalidFileLogger.error("JSONSerializer InvalidClassException : " + e);
 			}
 		}
 
@@ -60,7 +60,7 @@ public class JSONSerializer extends Serializer {
 			bw.write(json);
 			bw.write("\r\n");
 		} catch (IOException e) {
-			Main.invalidFileLogger.error("JSONSerializer IOException : " + e);
+			Serialize.invalidFileLogger.error("JSONSerializer IOException : " + e);
 		}
 	}
 }

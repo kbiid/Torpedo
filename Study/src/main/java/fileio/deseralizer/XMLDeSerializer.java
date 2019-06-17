@@ -14,9 +14,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import fileio.Employee;
-import fileio.Intern;
-import fileio.Main;
+import fileio.Serialize;
+import fileio.model.Employee;
+import fileio.model.Intern;
 
 public class XMLDeSerializer extends DeSerializer {
 	public XMLDeSerializer() {
@@ -34,13 +34,13 @@ public class XMLDeSerializer extends DeSerializer {
 			try {
 				document = documentBuilder.parse(getMakefile().getAbsolutePath());
 			} catch (SAXException | IOException e) {
-				Main.invalidFileLogger.error("XMLDeSerializer Exception : " + e);
+				Serialize.invalidFileLogger.error("XMLDeSerializer Exception : " + e);
 			} finally {
 				Employee emp = null;
 				readEmployee(emp, document);
 			}
 		} catch (ParserConfigurationException e) {
-			Main.invalidFileLogger.error("XMLDeSerializer Exception : " + e);
+			Serialize.invalidFileLogger.error("XMLDeSerializer Exception : " + e);
 		}
 	}
 
@@ -53,7 +53,7 @@ public class XMLDeSerializer extends DeSerializer {
 			try {
 				throw new InvalidClassException("Document 클래스가 아님");
 			} catch (InvalidClassException e) {
-				Main.invalidFileLogger.error("XMLDeSerializer Exception : " + e);
+				Serialize.invalidFileLogger.error("XMLDeSerializer Exception : " + e);
 			}
 		}
 		// root 구하기
@@ -72,7 +72,7 @@ public class XMLDeSerializer extends DeSerializer {
 					try {
 						throw new InvalidNameException("노드 이름이 올바르지 않습니다.");
 					} catch (InvalidNameException e) {
-						Main.invalidFileLogger.error("XMLDeSerializer Exception : " + e);
+						Serialize.invalidFileLogger.error("XMLDeSerializer Exception : " + e);
 					}
 				}
 			}

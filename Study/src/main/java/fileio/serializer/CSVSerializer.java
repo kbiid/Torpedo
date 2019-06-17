@@ -10,9 +10,9 @@ import java.util.List;
 
 import com.opencsv.CSVWriter;
 
-import fileio.Employee;
-import fileio.Intern;
-import fileio.Main;
+import fileio.Serialize;
+import fileio.model.Employee;
+import fileio.model.Intern;
 
 public class CSVSerializer extends Serializer {
 	private List<String[]> data;
@@ -64,7 +64,7 @@ public class CSVSerializer extends Serializer {
 		try (CSVWriter cw = new CSVWriter(new OutputStreamWriter(new FileOutputStream(getMakefile()), "EUC-KR"))) {
 			writeEmployee(cw);
 		} catch (IOException e) {
-			Main.invalidFileLogger.error("CSVSerializer IOException : " + e);
+			Serialize.invalidFileLogger.error("CSVSerializer IOException : " + e);
 		}
 	}
 
@@ -82,7 +82,7 @@ public class CSVSerializer extends Serializer {
 			try {
 				throw new InvalidClassException("Not CSVWriter Class");
 			} catch (InvalidClassException e) {
-				Main.invalidFileLogger.error("CSVSerializer InvalidClassException : " + e);
+				Serialize.invalidFileLogger.error("CSVSerializer InvalidClassException : " + e);
 			}
 		}
 	}

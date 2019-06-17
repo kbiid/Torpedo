@@ -1,4 +1,4 @@
-package fileio;
+package fileio.model;
 
 public class Intern extends Employee {
 	private static final long serialVersionUID = 4229400149178229867L;
