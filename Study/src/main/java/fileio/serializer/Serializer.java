@@ -4,37 +4,18 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import fileio.CommonSerializer;
 import fileio.Employee;
 import fileio.Intern;
 import fileio.Main;
 import fileio.Serialize;
 
-public abstract class Serializer implements Serialize {
-	private File dirfile;
-	private File makefile;
+public abstract class Serializer extends CommonSerializer implements Serialize {
 	private ArrayList<Employee> employeeList;
-	private String fileName;
-	private String fileNameIntern;
 
 	public Serializer() {
 		dirfile = new File(DIR);
 		employeeList = new ArrayList<>();
-	}
-
-	public String getFileName() {
-		return fileName;
-	}
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-
-	public String getFileNameIntern() {
-		return fileNameIntern;
-	}
-
-	public void setFileNameIntern(String fileNameIntern) {
-		this.fileNameIntern = fileNameIntern;
 	}
 
 	@Override
@@ -45,14 +26,6 @@ public abstract class Serializer implements Serialize {
 	@Override
 	public void setFilePathIntern() {
 		makefile = new File(DIR + fileNameIntern);
-	}
-
-	public File getDirfile() {
-		return dirfile;
-	}
-
-	public File getMakefile() {
-		return makefile;
 	}
 
 	public ArrayList<Employee> getEmployeeList() {
@@ -104,7 +77,7 @@ public abstract class Serializer implements Serialize {
 					throw new NullPointerException("파일 생성 실패!");
 				}
 			} catch (IOException e) {
-				e.printStackTrace();
+				Main.invalidFileLogger.error("Serializer Exception : " + e);
 			}
 		} else {
 			System.out.println("파일이 이미 존재합니다.");

@@ -3,36 +3,17 @@ package fileio.deseralizer;
 import java.io.File;
 import java.util.ArrayList;
 
+import fileio.CommonSerializer;
 import fileio.Employee;
 import fileio.Serialize;
 
-public abstract class DeSerializer implements Serialize {
-	private File dirfile;
-	private File makefile;
+public abstract class DeSerializer extends CommonSerializer implements Serialize {
 	private ArrayList<Employee> employeeList;
-	private String fileName;
-	private String fileNameIntern;
 
 	public DeSerializer() {
 		dirfile = new File(DIR);
 		setFileSawonPath();
 		employeeList = new ArrayList<>();
-	}
-
-	public File getDirfile() {
-		return dirfile;
-	}
-
-	public void setDirfile(File dirfile) {
-		this.dirfile = dirfile;
-	}
-
-	public File getMakefile() {
-		return makefile;
-	}
-
-	public void setMakefile(File makefile) {
-		this.makefile = makefile;
 	}
 
 	public ArrayList<Employee> getEmployeeList() {
@@ -41,22 +22,6 @@ public abstract class DeSerializer implements Serialize {
 
 	public void setEmployeeList(ArrayList<Employee> employeeList) {
 		this.employeeList = employeeList;
-	}
-
-	public String getFileName() {
-		return fileName;
-	}
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-
-	public String getFileNameIntern() {
-		return fileNameIntern;
-	}
-
-	public void setFileNameIntern(String fileNameIntern) {
-		this.fileNameIntern = fileNameIntern;
 	}
 
 	@Override

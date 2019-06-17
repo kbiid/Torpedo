@@ -21,8 +21,10 @@ public class Main {
 
 		MakeSerializer.makeDeSerializer(args[0]);
 		MakeSerializer.deserializer.deSerializeEmployee();
+		MakeSerializer.deserializer.showEmployeeList();
 
 		MakeSerializer.serializer.serializeWithIntern();
 		MakeSerializer.deserializer.deSrializeWithIntern();
+		MakeSerializer.deserializer.showEmployeeList();
 	}
 }
