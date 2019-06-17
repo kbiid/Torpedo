@@ -83,7 +83,7 @@ public abstract class DeSerializer implements Serialize {
 		return true;
 	}
 
-	public abstract void deSelialization();
+	public abstract void deSelialize();
 
 	public abstract void readEmployee(Employee emp, Object oin);
 
@@ -99,13 +99,13 @@ public abstract class DeSerializer implements Serialize {
 		employeeList.clear();
 	}
 	
-	public void deSerializationNotIntern() {
+	public void deSerializeEmployee() {
 		setFileSawonPath();
-		deSelialization();
+		deSelialize();
 	}
 
-	public void deSrializationIntern() {
+	public void deSrializeWithIntern() {
 		setFilePathIntern();
-		deSelialization();
+		deSelialize();
 	}
 }

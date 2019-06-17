@@ -16,6 +16,7 @@ import org.xml.sax.SAXException;
 
 import fileio.Employee;
 import fileio.Intern;
+import fileio.Main;
 
 public class XMLDeSerializer extends DeSerializer {
 	public XMLDeSerializer() {
@@ -24,7 +25,7 @@ public class XMLDeSerializer extends DeSerializer {
 	}
 
 	@Override
-	public void deSelialization() {
+	public void deSelialize() {
 		try {
 			// XML 문서 파싱
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -39,7 +40,7 @@ public class XMLDeSerializer extends DeSerializer {
 				readEmployee(emp, document);
 			}
 		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
+			Main.invalidFileLogger.error("XMLDeSerializer Exception : " + e);
 		}
 	}
 
@@ -52,7 +53,7 @@ public class XMLDeSerializer extends DeSerializer {
 			try {
 				throw new InvalidClassException("Document 클래스가 아님");
 			} catch (InvalidClassException e) {
-				e.printStackTrace();
+				Main.invalidFileLogger.error("XMLDeSerializer Exception : " + e);
 			}
 		}
 		// root 구하기
@@ -71,7 +72,7 @@ public class XMLDeSerializer extends DeSerializer {
 					try {
 						throw new InvalidNameException("노드 이름이 올바르지 않습니다.");
 					} catch (InvalidNameException e) {
-						e.printStackTrace();
+						Main.invalidFileLogger.error("XMLDeSerializer Exception : " + e);
 					}
 				}
 			}

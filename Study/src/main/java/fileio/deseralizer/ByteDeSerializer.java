@@ -7,6 +7,7 @@ import java.io.InvalidClassException;
 import java.io.ObjectInputStream;
 
 import fileio.Employee;
+import fileio.Main;
 
 public class ByteDeSerializer extends DeSerializer {
 	public ByteDeSerializer() {
@@ -15,7 +16,7 @@ public class ByteDeSerializer extends DeSerializer {
 	}
 
 	@Override
-	public void deSelialization() {
+	public void deSelialize() {
 		if (!checkDir() || !checkFile()) {
 			throw new NullPointerException("dirfile 변수가 NULL!");
 		}
@@ -25,7 +26,7 @@ public class ByteDeSerializer extends DeSerializer {
 				ObjectInputStream oin = new ObjectInputStream(fin)) {
 			readEmployee(emp, oin);
 		} catch (IOException e) {
-			e.printStackTrace();
+			Main.invalidFileLogger.error("ByteDeSerializer Exception : " + e);
 		}
 	}
 
@@ -39,7 +40,7 @@ public class ByteDeSerializer extends DeSerializer {
 			try {
 				throw new InvalidClassException("ObjectInputStream 클래스가 아님");
 			} catch (InvalidClassException e) {
-				e.printStackTrace();
+				Main.invalidFileLogger.error("ByteDeSerializer Exception : " + e);
 			}
 		}
 		try {
@@ -50,7 +51,7 @@ public class ByteDeSerializer extends DeSerializer {
 		} catch (EOFException e) {
 			return;
 		} catch (IOException | ClassNotFoundException e) {
-			e.printStackTrace();
+			Main.invalidFileLogger.error("ByteDeSerializer Exception : " + e);
 		}
 	}
 }

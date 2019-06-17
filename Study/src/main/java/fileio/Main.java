@@ -2,6 +2,9 @@ package fileio;
 
 import java.io.IOException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * 프로그램 실행시키기 위한 메인 클래스
  * 
@@ -9,17 +12,17 @@ import java.io.IOException;
  *
  */
 public class Main {
+	public static final Logger invalidFileLogger = LoggerFactory.getLogger("log.invalid");
+
 	public static void main(String[] args) throws IOException {
-		CheckArg.checkArgs(args[0]);
-		CheckArg.serializer.serializationNotIntern();
+//		Logger logger = LoggerFactory.getLogger(Main.class);
+		MakeSerializer.makeSerializer(args[0]);
+		MakeSerializer.serializer.serializeEmployee();
 
-		CheckArg.checkArgsDeSerializer(args[0]);
-		CheckArg.deserializer.deSerializationNotIntern();
-		CheckArg.deserializer.showEmployeeList();
+		MakeSerializer.makeDeSerializer(args[0]);
+		MakeSerializer.deserializer.deSerializeEmployee();
 
-		CheckArg.serializer.serializationIntern();
-
-		CheckArg.deserializer.deSrializationIntern();
-		CheckArg.deserializer.showEmployeeList();
+		MakeSerializer.serializer.serializeWithIntern();
+		MakeSerializer.deserializer.deSrializeWithIntern();
 	}
 }

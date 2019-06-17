@@ -19,6 +19,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import fileio.Intern;
+import fileio.Main;
 
 public class XMLSerializer extends Serializer {
 	public XMLSerializer() {
@@ -27,14 +28,14 @@ public class XMLSerializer extends Serializer {
 	}
 
 	@Override
-	protected void doSelialization() {
+	protected void selialize() {
 		try {
 			DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
 			writeEmployee(docBuilder);
 		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
+			Main.invalidFileLogger.error("XMLSerializer ParserConfigurationException : " + e);
 		}
 	}
 
@@ -48,14 +49,13 @@ public class XMLSerializer extends Serializer {
 			try {
 				throw new InvalidClassException("DocumentBuilder 클래스가 아님");
 			} catch (InvalidClassException e) {
-				e.printStackTrace();
+				Main.invalidFileLogger.error("XMLSerializer InvalidClassException : " + e);
 			}
 		}
 		// 루트 엘리먼트
 		Document doc = docBuilder.newDocument();
 		Element rootElement = doc.createElement("company");
 		doc.appendChild(rootElement);
-
 		Element employee = null;
 
 		for (int i = 0; i < getEmployeeList().size(); i++) {
@@ -116,21 +116,17 @@ public class XMLSerializer extends Serializer {
 			try {
 				result = new StreamResult(new FileOutputStream(getMakefile()));
 			} catch (FileNotFoundException e) {
-				e.printStackTrace();
+				Main.invalidFileLogger.error("XMLSerializer FileNotFoundException : " + e);
 			} finally {
 				try {
 					transformer.transform(source, result);
 				} catch (TransformerException e) {
-					e.printStackTrace();
+					Main.invalidFileLogger.error("XMLSerializer TransformerException : " + e);
 				}
 			}
 		} catch (TransformerConfigurationException e) {
-			e.printStackTrace();
+			Main.invalidFileLogger.error("XMLSerializer TransformerConfigurationException : " + e);
 		}
 		System.out.println("xml file saved!");
-	}
-
-	public void employeeToXml() {
-
 	}
 }

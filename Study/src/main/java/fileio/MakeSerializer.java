@@ -11,11 +11,11 @@ import fileio.serializer.JSONSerializer;
 import fileio.serializer.Serializer;
 import fileio.serializer.XMLSerializer;
 
-public class CheckArg {
+public class MakeSerializer {
 	public static Serializer serializer;
 	public static DeSerializer deserializer;
 
-	public static void checkArgs(String str) {
+	public static void makeSerializer(String str) {
 		switch (str.toLowerCase()) {
 		case "byte":
 			serializer = new ByteSerializer();
@@ -30,11 +30,12 @@ public class CheckArg {
 			serializer = new JSONSerializer();
 			break;
 		default:
+			Main.invalidFileLogger.error("makeSerializer : 문자열 입력 오류");
 			throw new NullPointerException("적절치 않은 문자 입력");
 		}
 	}
 
-	public static void checkArgsDeSerializer(String str) {
+	public static void makeDeSerializer(String str) {
 		switch (str.toLowerCase()) {
 		case "byte":
 			deserializer = new ByteDeSerializer();
@@ -49,6 +50,7 @@ public class CheckArg {
 			deserializer = new JSONDeSerializer();
 			break;
 		default:
+			Main.invalidFileLogger.error("makeDeSerializer : 문자열 입력 오류");
 			throw new NullPointerException("적절치 않은 문자 입력");
 		}
 	}

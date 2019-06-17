@@ -10,6 +10,7 @@ import com.google.gson.JsonObject;
 
 import fileio.Employee;
 import fileio.Intern;
+import fileio.Main;
 
 public class JSONSerializer extends Serializer {
 	public JSONSerializer() {
@@ -18,7 +19,7 @@ public class JSONSerializer extends Serializer {
 	}
 
 	@Override
-	protected void doSelialization() {
+	protected void selialize() {
 		JsonObject jObj = null;
 		JsonObject empObj = new JsonObject();
 		JsonArray array = new JsonArray();
@@ -51,7 +52,7 @@ public class JSONSerializer extends Serializer {
 			try {
 				throw new InvalidClassException("String이 아님");
 			} catch (InvalidClassException e) {
-				e.printStackTrace();
+				Main.invalidFileLogger.error("JSONSerializer InvalidClassException : " + e);
 			}
 		}
 
@@ -59,7 +60,7 @@ public class JSONSerializer extends Serializer {
 			bw.write(json);
 			bw.write("\r\n");
 		} catch (IOException e) {
-			e.printStackTrace();
+			Main.invalidFileLogger.error("JSONSerializer IOException : " + e);
 		}
 	}
 }

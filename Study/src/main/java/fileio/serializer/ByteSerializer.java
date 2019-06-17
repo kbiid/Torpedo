@@ -6,6 +6,7 @@ import java.io.InvalidClassException;
 import java.io.ObjectOutputStream;
 
 import fileio.Employee;
+import fileio.Main;
 
 public class ByteSerializer extends Serializer {
 	public ByteSerializer() {
@@ -13,16 +14,16 @@ public class ByteSerializer extends Serializer {
 		setFileNameIntern("sawon-v2.txt");
 	}
 
-	// 직렬화 후 파일에 저장하는 메소드
-	public void doSelialization() {
-		makeDir();
+	@Override
+	public void selialize() {
+		checkAndMakeDir();
 		makeFile();
 
 		try (FileOutputStream fout = new FileOutputStream(super.getMakefile());
 				ObjectOutputStream oout = new ObjectOutputStream(fout)) {
 			writeEmployee(oout);
 		} catch (Exception e) {
-			e.printStackTrace();
+			Main.invalidFileLogger.error("ByteSerializer Exception : " + e);
 		}
 	}
 
@@ -34,14 +35,14 @@ public class ByteSerializer extends Serializer {
 				try {
 					oout.writeObject(employee);
 				} catch (IOException e) {
-					e.printStackTrace();
+					Main.invalidFileLogger.error("ByteSerializer IOException : " + e);
 				}
 			}
 		} else {
 			try {
 				throw new InvalidClassException("ObjectOutputStream 클래스가 아님");
 			} catch (InvalidClassException e) {
-				e.printStackTrace();
+				Main.invalidFileLogger.error("ByteSerializer InvalidClassException : " + e);
 			}
 		}
 	}

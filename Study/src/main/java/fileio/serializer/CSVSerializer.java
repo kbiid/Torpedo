@@ -12,6 +12,7 @@ import com.opencsv.CSVWriter;
 
 import fileio.Employee;
 import fileio.Intern;
+import fileio.Main;
 
 public class CSVSerializer extends Serializer {
 	private List<String[]> data;
@@ -21,15 +22,6 @@ public class CSVSerializer extends Serializer {
 		data = new ArrayList<String[]>();
 		setFileName("sawon-v1.csv");
 		setFileNameIntern("sawon-v2.csv");
-	}
-
-	public void setItemList() {
-		strList = new String[6];
-
-		for (int i = 0; i < getItemList().size(); i++) {
-			strList[i] = getItemList().get(i);
-		}
-		data.add(strList);
 	}
 
 	public void setEmployeeData() {
@@ -63,8 +55,8 @@ public class CSVSerializer extends Serializer {
 	}
 
 	@Override
-	protected void doSelialization() {
-		makeDir();
+	protected void selialize() {
+		checkAndMakeDir();
 		makeFile();
 		data.clear();
 		setEmployeeData();
@@ -72,7 +64,7 @@ public class CSVSerializer extends Serializer {
 		try (CSVWriter cw = new CSVWriter(new OutputStreamWriter(new FileOutputStream(getMakefile()), "EUC-KR"))) {
 			writeEmployee(cw);
 		} catch (IOException e) {
-			e.printStackTrace();
+			Main.invalidFileLogger.error("CSVSerializer IOException : " + e);
 		}
 	}
 
@@ -88,9 +80,9 @@ public class CSVSerializer extends Serializer {
 			}
 		} else {
 			try {
-				throw new InvalidClassException("CSVWriter 클래스가 아님");
+				throw new InvalidClassException("Not CSVWriter Class");
 			} catch (InvalidClassException e) {
-				e.printStackTrace();
+				Main.invalidFileLogger.error("CSVSerializer InvalidClassException : " + e);
 			}
 		}
 	}

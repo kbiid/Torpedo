@@ -13,6 +13,7 @@ import com.opencsv.CSVReader;
 
 import fileio.Employee;
 import fileio.Intern;
+import fileio.Main;
 
 public class CSVDeSerializer extends DeSerializer {
 	private List<String[]> data;
@@ -24,7 +25,7 @@ public class CSVDeSerializer extends DeSerializer {
 	}
 
 	@Override
-	public void deSelialization() {
+	public void deSelialize() {
 		Employee emp = null;
 		data.clear();
 
@@ -32,9 +33,9 @@ public class CSVDeSerializer extends DeSerializer {
 			readEmployee(emp, reader);
 			setDataToEmployee();
 		} catch (FileNotFoundException | UnsupportedEncodingException e) {
-			e.printStackTrace();
+			Main.invalidFileLogger.error("CSVDeSerializer Exception : " + e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			Main.invalidFileLogger.error("CSVDeSerializer Exception : " + e);
 		}
 	}
 
@@ -49,7 +50,7 @@ public class CSVDeSerializer extends DeSerializer {
 			try {
 				throw new InvalidClassException("CSVReader 클래스가 아님");
 			} catch (InvalidClassException e) {
-				e.printStackTrace();
+				Main.invalidFileLogger.error("CSVDeSerializer Exception : " + e);
 			}
 		}
 		try {
@@ -57,7 +58,7 @@ public class CSVDeSerializer extends DeSerializer {
 				data.add(s);
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			Main.invalidFileLogger.error("CSVDeSerializer Exception : " + e);
 		}
 	}
 
