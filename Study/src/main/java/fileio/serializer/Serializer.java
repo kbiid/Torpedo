@@ -96,7 +96,6 @@ public abstract class Serializer implements Serialize {
 		if (dirfile == null) {
 			throw new NullPointerException("dirfile 변수가 NULL!");
 		}
-
 		if (!dirfile.exists()) { // 폴더가 없는 경우
 			System.out.println("폴더가 없습니다.");
 			if (dirfile.mkdir()) {
@@ -114,7 +113,6 @@ public abstract class Serializer implements Serialize {
 		if (makefile == null) {
 			throw new NullPointerException("makefile 변수가 NULL!");
 		}
-
 		if (!makefile.exists()) { // 파일이 없는 경우
 			System.out.println("파일이 없습니다.");
 			try {

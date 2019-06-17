@@ -9,7 +9,7 @@ import java.io.Serializable;
  *
  */
 public class Employee implements Serializable {
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -1908203776903222872L;
 	private String name;
 	private int age;
 	private String phoneNumber;

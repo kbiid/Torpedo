@@ -8,7 +8,6 @@ import java.io.ObjectOutputStream;
 import fileio.Employee;
 
 public class ByteSerializer extends Serializer {
-
 	public ByteSerializer() {
 		setFileName("sawon-v1.txt");
 		setFileNameIntern("sawon-v2.txt");

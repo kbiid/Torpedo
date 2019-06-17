@@ -3,9 +3,11 @@ package fileio;
 import fileio.deseralizer.ByteDeSerializer;
 import fileio.deseralizer.CSVDeSerializer;
 import fileio.deseralizer.DeSerializer;
+import fileio.deseralizer.JSONDeSerializer;
 import fileio.deseralizer.XMLDeSerializer;
 import fileio.serializer.ByteSerializer;
 import fileio.serializer.CSVSerializer;
+import fileio.serializer.JSONSerializer;
 import fileio.serializer.Serializer;
 import fileio.serializer.XMLSerializer;
 
@@ -25,7 +27,7 @@ public class CheckArg {
 			serializer = new XMLSerializer();
 			break;
 		case "json":
-			serializer = new ByteSerializer();
+			serializer = new JSONSerializer();
 			break;
 		default:
 			throw new NullPointerException("적절치 않은 문자 입력");
@@ -44,7 +46,7 @@ public class CheckArg {
 			deserializer = new XMLDeSerializer();
 			break;
 		case "json":
-			deserializer = new ByteDeSerializer();
+			deserializer = new JSONDeSerializer();
 			break;
 		default:
 			throw new NullPointerException("적절치 않은 문자 입력");
