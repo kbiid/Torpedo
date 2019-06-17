@@ -3,6 +3,7 @@ package fileio.deseralizer;
 import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InvalidClassException;
 import java.io.ObjectInputStream;
 
 import fileio.Employee;
@@ -34,6 +35,12 @@ public class ByteDeSerializer extends DeSerializer {
 
 		if ((obj instanceof ObjectInputStream)) {
 			oin = (ObjectInputStream) obj;
+		} else {
+			try {
+				throw new InvalidClassException("ObjectInputStream 클래스가 아님");
+			} catch (InvalidClassException e) {
+				e.printStackTrace();
+			}
 		}
 		try {
 			while (true) {

@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.InvalidClassException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,17 +26,15 @@ public class CSVDeSerializer extends DeSerializer {
 	@Override
 	public void deSelialization() {
 		Employee emp = null;
+		data.clear();
 
 		try (CSVReader reader = new CSVReader(new InputStreamReader(new FileInputStream(getMakefile()), "EUC-KR"))) {
-			// UTF-8
 			readEmployee(emp, reader);
 			setDataToEmployee();
 		} catch (FileNotFoundException | UnsupportedEncodingException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
-			data.clear();
 		}
 	}
 
@@ -46,6 +45,12 @@ public class CSVDeSerializer extends DeSerializer {
 
 		if ((obj instanceof CSVReader)) {
 			reader = (CSVReader) obj;
+		} else {
+			try {
+				throw new InvalidClassException("CSVReader 클래스가 아님");
+			} catch (InvalidClassException e) {
+				e.printStackTrace();
+			}
 		}
 		try {
 			while ((s = reader.readNext()) != null) {

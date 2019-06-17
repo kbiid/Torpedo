@@ -2,6 +2,7 @@ package fileio.serializer;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InvalidClassException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -65,14 +66,13 @@ public class CSVSerializer extends Serializer {
 	protected void doSelialization() {
 		makeDir();
 		makeFile();
+		data.clear();
 		setEmployeeData();
 
 		try (CSVWriter cw = new CSVWriter(new OutputStreamWriter(new FileOutputStream(getMakefile()), "EUC-KR"))) {
 			writeEmployee(cw);
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		} finally {
-			data.clear();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -85,6 +85,12 @@ public class CSVSerializer extends Serializer {
 			while (it.hasNext()) {
 				String[] str = (String[]) it.next();
 				cw.writeNext(str);
+			}
+		} else {
+			try {
+				throw new InvalidClassException("CSVWriter 클래스가 아님");
+			} catch (InvalidClassException e) {
+				e.printStackTrace();
 			}
 		}
 	}

@@ -10,12 +10,10 @@ import fileio.serializer.Serializer;
 import fileio.serializer.XMLSerializer;
 
 public class CheckArg {
-	private Serializer serializer;
-	private DeSerializer deserializer;
+	public static Serializer serializer;
+	public static DeSerializer deserializer;
 
-	public Serializer checkArgs(String str) {
-		serializer = null;
-
+	public static void checkArgs(String str) {
 		switch (str.toLowerCase()) {
 		case "byte":
 			serializer = new ByteSerializer();
@@ -28,18 +26,13 @@ public class CheckArg {
 			break;
 		case "json":
 			serializer = new ByteSerializer();
-			serializer.setFileName("sawon-v1.json");
-			serializer.setFileNameIntern("sawon-v2.json");
 			break;
 		default:
-			break;
+			throw new NullPointerException("적절치 않은 문자 입력");
 		}
-		return serializer;
 	}
 
-	public DeSerializer checkArgsDeSerializer(String str) {
-		deserializer = null;
-
+	public static void checkArgsDeSerializer(String str) {
 		switch (str.toLowerCase()) {
 		case "byte":
 			deserializer = new ByteDeSerializer();
@@ -52,24 +45,8 @@ public class CheckArg {
 			break;
 		case "json":
 			deserializer = new ByteDeSerializer();
-			deserializer.setFileName("sawon-v1.json");
-			deserializer.setFileNameIntern("sawon-v2.json");
 			break;
 		default:
-			break;
-		}
-
-		return deserializer;
-	}
-
-	public void checkNull(Serializer serializer) {
-		if (serializer == null) {
-			throw new NullPointerException("적절치 않은 문자 입력");
-		}
-	}
-
-	public void checkNullDeSerializer(DeSerializer deserializer) {
-		if (deserializer == null) {
 			throw new NullPointerException("적절치 않은 문자 입력");
 		}
 	}

@@ -2,6 +2,7 @@ package fileio.serializer;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InvalidClassException;
 import java.io.ObjectOutputStream;
 
 import fileio.Employee;
@@ -36,6 +37,12 @@ public class ByteSerializer extends Serializer {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+			}
+		} else {
+			try {
+				throw new InvalidClassException("ObjectOutputStream 클래스가 아님");
+			} catch (InvalidClassException e) {
+				e.printStackTrace();
 			}
 		}
 	}
