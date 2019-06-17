@@ -49,7 +49,7 @@ public class ByteDeSerializer extends DeSerializer {
 				addList(emp);
 			}
 		} catch (EOFException e) {
-			return;
+			Main.invalidFileLogger.error("ByteDeSerializer Exception : " + e);
 		} catch (IOException | ClassNotFoundException e) {
 			Main.invalidFileLogger.error("ByteDeSerializer Exception : " + e);
 		}

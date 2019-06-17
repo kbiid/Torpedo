@@ -34,7 +34,7 @@ public class XMLDeSerializer extends DeSerializer {
 			try {
 				document = documentBuilder.parse(getMakefile().getAbsolutePath());
 			} catch (SAXException | IOException e) {
-				e.printStackTrace();
+				Main.invalidFileLogger.error("XMLDeSerializer Exception : " + e);
 			} finally {
 				Employee emp = null;
 				readEmployee(emp, document);

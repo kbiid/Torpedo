@@ -66,7 +66,7 @@ public class CSVDeSerializer extends DeSerializer {
 		Employee emp = null;
 
 		for (String[] str : data) {
-			if (!Isintern(str)) {
+			if (!IsIntern(str)) {
 				emp = new Employee(str[0], Integer.parseInt(str[1]), str[2], str[3], str[4]);
 				getEmployeeList().add(emp);
 			} else {
@@ -76,7 +76,7 @@ public class CSVDeSerializer extends DeSerializer {
 		}
 	}
 
-	public boolean Isintern(String[] str) {
+	public boolean IsIntern(String[] str) {
 		if (str.length > 5 && !str[5].equals("정직원")) {
 			return true;
 		} else {
