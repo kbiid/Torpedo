@@ -31,13 +31,12 @@ public class XMLDeSerializer extends DeSerializer {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder documentBuilder = factory.newDocumentBuilder();
 			Document document = null;
+			Employee emp = null;
 			try {
 				document = documentBuilder.parse(getMakefile().getAbsolutePath());
+				readEmployee(emp, document);
 			} catch (SAXException | IOException e) {
 				Serialize.invalidFileLogger.error("XMLDeSerializer Exception : " + e);
-			} finally {
-				Employee emp = null;
-				readEmployee(emp, document);
 			}
 		} catch (ParserConfigurationException e) {
 			Serialize.invalidFileLogger.error("XMLDeSerializer Exception : " + e);

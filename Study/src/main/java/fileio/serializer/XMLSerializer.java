@@ -127,6 +127,5 @@ public class XMLSerializer extends Serializer {
 		} catch (TransformerConfigurationException e) {
 			Serialize.invalidFileLogger.error("XMLSerializer TransformerConfigurationException : " + e);
 		}
-		System.out.println("xml file saved!");
 	}
 }
