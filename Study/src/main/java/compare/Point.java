@@ -1,5 +1,11 @@
 package compare;
 
+/**
+ * x좌표가 오름차순, x좌표가 같으면 y좌표는 내림차순으로 정렬
+ * 
+ * @author user
+ *
+ */
 public class Point implements Comparable<Point> {
 	private int x, y;
 
