@@ -1,12 +1,6 @@
 package copy.array;
 
 public class DeepCopy {
-	private int[] arr;
-
-	public DeepCopy() {
-		arr = null;
-	}
-
 	public int[] deepCopy(int arr[]) {
 		if (arr == null) {
 			throw new NullPointerException("Array is Null");
