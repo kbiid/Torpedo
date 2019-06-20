@@ -7,7 +7,7 @@ package thread.traning;
  *
  */
 public class Factorial {
-	public synchronized long factorial(long num) {
+	public long factorial(long num) {
 		if (num <= 1) {
 			return 1;
 		} else {
