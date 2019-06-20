@@ -6,11 +6,11 @@ public class Main {
 		test.setTestNum(100);
 
 //		test.testExtendsThread();
-//		test.testRunnableThread();
+		test.testRunnableThread();
 //		test.testExecutorService();
 //		ExecutorServicer ex = new ExecutorServicer();
 //		ex.printExecutor();
 //		test.testSingleExecutor();
-		test.testCachedExecutor();
+//		test.testCachedExecutor();
 	}
 }
