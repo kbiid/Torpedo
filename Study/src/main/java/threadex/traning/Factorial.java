@@ -1,4 +1,4 @@
-package thread.traning;
+package threadex.traning;
 
 /**
  * factorial 클래스

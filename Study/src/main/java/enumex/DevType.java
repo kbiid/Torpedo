@@ -1,4 +1,4 @@
-package studyenum;
+package enumex;
 
 /**
  * 열거형을 정의한 클래스

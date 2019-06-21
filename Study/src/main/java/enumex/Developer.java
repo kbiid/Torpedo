@@ -1,13 +1,9 @@
-package studyenum;
+package enumex;
 
-public class DeveloperHaveEnum {
+public class Developer {
 	private String name;
 	private int career;
-	private DevTypeDeveloper type;
-
-	public enum DevTypeDeveloper {
-		MOBILE, WEB, SERVER
-	}
+	private DevType devType;
 
 	public void setName(String name) {
 		this.name = name;
@@ -25,11 +21,11 @@ public class DeveloperHaveEnum {
 		return career;
 	}
 
-	public void setDevType(DevTypeDeveloper devType) {
-		this.type = devType;
+	public void setDevType(DevType devType) {
+		this.devType = devType;
 	}
 
-	public DevTypeDeveloper getDevType() {
-		return type;
+	public DevType getDevType() {
+		return devType;
 	}
 }

@@ -1,4 +1,4 @@
-package thread.traning;
+package threadex.traning;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -25,8 +25,8 @@ public class ExecutorServicer {
 			min = max + 1;
 		}
 		executor.shutdown();
-		while (!executor.isTerminated()) {
-		}
+//		while (!executor.isTerminated()) {
+//		}
 	}
 
 	public void runSingleThreadExecutor(int threadCount, int testNum) {
@@ -46,8 +46,8 @@ public class ExecutorServicer {
 			min = max + 1;
 		}
 		executor.shutdown();
-		while (!executor.isTerminated()) {
-		}
+//		while (!executor.isTerminated()) {
+//		}
 	}
 
 	public void runCachedTreadPool(int threadCount, int testNum) {
@@ -67,9 +67,8 @@ public class ExecutorServicer {
 			min = max + 1;
 		}
 		executor.shutdown();
-		while (!executor.isTerminated()) {
-		}
-
+//		while (!executor.isTerminated()) {
+//		}
 	}
 
 	public void printExecutor() {

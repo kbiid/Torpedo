@@ -1,7 +1,7 @@
-package thread.traning;
+package threadex.traning;
 
 public class AddNum {
-	public long addNum(int num) {
+	public synchronized long addNum(int num) {
 		if (num <= 0) {
 			return 0;
 		} else {

@@ -1,4 +1,4 @@
-package thread.traning;
+package threadex.traning;
 
 public class RunnableThread implements Runnable {
 	private long sum;
@@ -26,7 +26,8 @@ public class RunnableThread implements Runnable {
 		for (int i = minNum; i <= maxNum; i++) {
 			sum = add.addNum(i);
 //			System.out.println(i + " add result = " + sum);
-			System.out.println(i + " factorial : " + bigInt.factorial(i));
+			bigInt.factorial(i);
+//			System.out.println(i + " factorial : " + bigInt.factorial(i));
 //			sum = fac.factorial(i);
 //			System.out.println(i + " factorial result = " + sum);
 		}

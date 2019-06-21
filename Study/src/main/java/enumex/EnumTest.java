@@ -1,4 +1,4 @@
-package studyenum;
+package enumex;
 
 public class EnumTest {
 	public static void main(String[] args) {

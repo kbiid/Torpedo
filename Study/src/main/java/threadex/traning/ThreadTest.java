@@ -1,4 +1,4 @@
-package thread.traning;
+package threadex.traning;
 
 public class ThreadTest {
 	private int threadCount;
@@ -23,32 +23,47 @@ public class ThreadTest {
 		max = 0;
 	}
 
-	public void testExecutorService() {
+	public void runTestSwitch(String str) {
 		start = System.currentTimeMillis();
-		ExecutorServicer executor = new ExecutorServicer();
-		executor.runExecutor(threadCount, testNum);
+
+		switch (str) {
+		case "extends":
+			testExtendsThread();
+			break;
+		case "runnable":
+			testRunnableThread();
+			break;
+		case "service":
+			testExecutorService();
+			break;
+		case "single":
+			testSingleExecutor();
+			break;
+		case "cache":
+			testCachedExecutor();
+			break;
+		}
+
 		end = System.currentTimeMillis();
-		System.out.println("Thread 갯수 " + threadCount + " 소요 시간 : " + (end - start));
-	}
-	
-	public void testSingleExecutor() {
-		start = System.currentTimeMillis();
-		ExecutorServicer executor = new ExecutorServicer();
-		executor.runSingleThreadExecutor(threadCount, testNum);
-		end = System.currentTimeMillis();
-		System.out.println("Thread 갯수 " + threadCount + " 소요 시간 : " + (end - start));
-	}
-	
-	public void testCachedExecutor() {
-		start = System.currentTimeMillis();
-		ExecutorServicer executor = new ExecutorServicer();
-		executor.runCachedTreadPool(threadCount, testNum);
-		end = System.currentTimeMillis();
-		System.out.println("Thread 갯수 " + threadCount + " 소요 시간 : " + (end - start));
+		System.out.println(str + "methods Thread 갯수 " + threadCount + " 소요 시간 : " + (end - start));
 	}
 
-	public void testRunnableThread() {
-		start = System.currentTimeMillis();
+	private void testExecutorService() {
+		ExecutorServicer executor = new ExecutorServicer();
+		executor.runExecutor(threadCount, testNum);
+	}
+
+	private void testSingleExecutor() {
+		ExecutorServicer executor = new ExecutorServicer();
+		executor.runSingleThreadExecutor(threadCount, testNum);
+	}
+
+	private void testCachedExecutor() {
+		ExecutorServicer executor = new ExecutorServicer();
+		executor.runCachedTreadPool(threadCount, testNum);
+	}
+
+	private void testRunnableThread() {
 		initNumValue();
 		Thread t = null;
 		RunnableThread rt;
@@ -65,18 +80,10 @@ public class ThreadTest {
 			t = new Thread(rt);
 			t.start();
 			min = max + 1;
-			try {
-				t.join();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 		}
-		end = System.currentTimeMillis();
-		System.out.println("Thread 갯수 " + threadCount + " 소요 시간 : " + (end - start));
 	}
 
-	public void testExtendsThread() {
-		start = System.currentTimeMillis();
+	private void testExtendsThread() {
 		initNumValue();
 		ExtendsThread t;
 		min = 1;
@@ -91,13 +98,6 @@ public class ThreadTest {
 			t.setMaxNum(max);
 			t.start();
 			min = max + 1;
-			try {
-				t.join();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
 		}
-		end = System.currentTimeMillis();
-		System.out.println("Thread 갯수 " + threadCount + " 소요 시간 : " + (end - start));
 	}
 }

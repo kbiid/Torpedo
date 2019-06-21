@@ -1,4 +1,4 @@
-package studyenum;
+package enumex;
 
 /**
  * 열거형에 값을 추가한 형태

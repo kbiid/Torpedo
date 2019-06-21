@@ -1,9 +1,9 @@
-package thread.traning;
+package threadex.traning;
 
 import java.math.BigInteger;
 
 public class BigIntegerFactorial {
-	public BigInteger factorial(int n) {
+	public synchronized BigInteger factorial(int n) {
 		BigInteger bigInt = BigInteger.ONE;
 
 		for (int i = 2; i <= n; i++) {

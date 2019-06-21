@@ -1,9 +1,16 @@
-package thread.singlethread;
+package threadex.singlethread;
 
-public class SingleThreadRunnable implements Runnable {
+/**
+ * Single Thread(Thread 클래스 상속)
+ * 
+ * @author user
+ *
+ */
+public class SingleThreadEx extends Thread {
 	private int[] temp;
 
-	public SingleThreadRunnable() {
+	public SingleThreadEx(String threadName) {
+		super(threadName);
 		temp = new int[10];
 
 		for (int i = 0; i < temp.length; i++) {
@@ -11,7 +18,6 @@ public class SingleThreadRunnable implements Runnable {
 		}
 	}
 
-	@Override
 	public void run() {
 		for (int i : temp) {
 			try {
@@ -19,8 +25,7 @@ public class SingleThreadRunnable implements Runnable {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-
-			System.out.println("Thread 이름 : " + Thread.currentThread().getName());
+			System.out.println("Thread 이름 : " + currentThread().getName());
 			System.out.println("temp value : " + i);
 		}
 	}

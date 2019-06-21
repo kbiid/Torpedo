@@ -1,4 +1,4 @@
-package thread.traning;
+package threadex.traning;
 
 public class ExtendsThread extends Thread {
 	private long sum;
@@ -10,6 +10,7 @@ public class ExtendsThread extends Thread {
 	public ExtendsThread() {
 		fac = new Factorial();
 		add = new AddNum();
+		bigInt = new BigIntegerFactorial();
 	}
 
 	public void setMinNum(int minNum) {
@@ -25,7 +26,8 @@ public class ExtendsThread extends Thread {
 		for (int i = minNum; i <= maxNum; i++) {
 			sum = add.addNum(i);
 //				System.out.println(i + " add result = " + sum);
-			System.out.println(i + " factorial : " + bigInt.factorial(i));
+			bigInt.factorial(i);
+//			System.out.println(i + " factorial : " + bigInt.factorial(i));
 //			sum = fac.factorial(i);
 //				System.out.println(i + " factorial result = " + sum);
 		}
