@@ -25,8 +25,6 @@ public class ExecutorServicer {
 			min = max + 1;
 		}
 		executor.shutdown();
-//		while (!executor.isTerminated()) {
-//		}
 	}
 
 	public void runSingleThreadExecutor(int threadCount, int testNum) {
@@ -46,8 +44,6 @@ public class ExecutorServicer {
 			min = max + 1;
 		}
 		executor.shutdown();
-//		while (!executor.isTerminated()) {
-//		}
 	}
 
 	public void runCachedTreadPool(int threadCount, int testNum) {
@@ -67,8 +63,6 @@ public class ExecutorServicer {
 			min = max + 1;
 		}
 		executor.shutdown();
-//		while (!executor.isTerminated()) {
-//		}
 	}
 
 	public void printExecutor() {
