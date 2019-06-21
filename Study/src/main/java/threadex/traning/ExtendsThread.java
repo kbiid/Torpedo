@@ -3,12 +3,10 @@ package threadex.traning;
 public class ExtendsThread extends Thread {
 	private long sum;
 	private int minNum, maxNum;
-	private Factorial fac;
 	private AddNum add;
 	private BigIntegerFactorial bigInt;
 
 	public ExtendsThread() {
-		fac = new Factorial();
 		add = new AddNum();
 		bigInt = new BigIntegerFactorial();
 	}
@@ -28,8 +26,6 @@ public class ExtendsThread extends Thread {
 //				System.out.println(i + " add result = " + sum);
 			bigInt.factorial(i);
 //			System.out.println(i + " factorial : " + bigInt.factorial(i));
-//			sum = fac.factorial(i);
-//				System.out.println(i + " factorial result = " + sum);
 		}
 	}
 }
