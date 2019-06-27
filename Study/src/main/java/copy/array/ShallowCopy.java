@@ -9,6 +9,6 @@ public class ShallowCopy {
 
 	public int[] shallowCopy(int arr[]) {
 		this.arr = arr;
-		return arr;
+		return this.arr;
 	}
 }
